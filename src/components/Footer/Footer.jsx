@@ -6,15 +6,15 @@ export default function Footer() {
     <footer className="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white py-8">
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
         <div className="mb-4 md:mb-0">
-          <h2 className="text-2xl font-bold">Contact Us</h2>
-          <p className="mt-2">For room inquiries, please contact us:</p>
+          <h2 className="text-2xl font-bold">Contacto</h2>
+          <p className="mt-2">Para mas informacion Favor Contactarnos:</p>
           <div className="flex items-center space-x-2 mt-2">
             <Mail className="h-5 w-5" />
-            <p>rental@example.com</p>
+            <p>juniormojica26@gmail.com </p>
           </div>
           <div className="flex items-center space-x-2">
             <Phone className="h-5 w-5" />
-            <p>+123 456 7890</p>
+            <p>321 871 0632</p>
           </div>
         </div>
         <div className="flex items-center space-x-4">
@@ -26,10 +26,10 @@ export default function Footer() {
             </a>
           </Button>
           <Button variant="outline">
-            <a href="/privacy" className="hover:text-primary">Privacy Policy</a>
+            <a href="/privacy" className="hover:text-primary">Privacidad</a>
           </Button>
           <Button variant="outline">
-            <a href="/terms" className="hover:text-primary">Terms of Service</a>
+            <a href="/terms" className="hover:text-primary">Terminos y condiciones</a>
           </Button>
         </div>
       </div>

@@ -10,7 +10,7 @@ export default function Header() {
       <div className="container mx-auto px-4 py-6 flex justify-between items-center">
         <div className="flex items-center">
           <Home className="h-6 w-6 mr-2" />
-          <h1 className="text-2xl font-bold">Pensionado UPC Sabanas</h1>
+          <h1 className="text-2xl font-bold">Pension UPC </h1>
         </div>
         <nav className="hidden md:flex space-x-4">
           <Button variant="solid" className="hover:text-primary">Inicio</Button>
