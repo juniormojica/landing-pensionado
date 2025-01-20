@@ -5,6 +5,7 @@ import Contact from './components/Contact/Contact'
 import Footer from './components/Footer/Footer'
 import Hero from './components/Hero/Hero'
 import CardPricing from './components/CardPricing/CardPricing'
+import Map	 from './components/Map/Map'
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col">\
@@ -18,6 +19,7 @@ export default function App() {
         <CardPricing />
       </main>
       <Contact />
+      <Map />
       <Footer />
     </div>
   )
