@@ -11,6 +11,7 @@ export default {
         lightGray: "#F5F5F5", // Gris Claro
         darkGray: "#757575", // Gris Oscuro
         white: "#FFFFFF", // Blanco
+        heroText:'#8AB637'
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

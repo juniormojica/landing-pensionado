@@ -32,11 +32,12 @@ export default function App() {
       <Header />
       <Hero />
       <main className="flex-grow">
+      <Features />
         <Carousel images={imagenes}/>
         <Contact >
           Apartar Cupo
         </Contact >
-        <Features />
+        
         <CardPricing />
       </main>
       <Contact />
