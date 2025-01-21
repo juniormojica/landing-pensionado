@@ -38,11 +38,11 @@ export default function Carousel() {
       className="w-full h-[400px] object-contain mx-auto" // Cambiamos object-cover por object-contain
     />
   </div>
-      <div className="flex justify-between mt-2">
-        <button onClick={prevSlide} className="p-2 bg-white dark:bg-gray-800 rounded-full shadow">
+      <div className="flex justify-evenly  mt-2">
+        <button onClick={prevSlide} className="p-4 bg-secondaryYellow dark:bg-gray-800 rounded-full shadow  hover:text-white hover:bg-accentGreen">
           <ArrowLeft className="h-5 w-5" />
         </button>
-        <button onClick={nextSlide} className="p-2 bg-white dark:bg-gray-800 rounded-full shadow">
+        <button onClick={nextSlide} className="p-4 bg-secondaryYellow dark:bg-gray-800 rounded-full shadow hover:text-white hover:bg-accentGreen">
           <ArrowRight className="h-5 w-5" />
         </button>
       </div>

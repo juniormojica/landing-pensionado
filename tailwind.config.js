@@ -5,12 +5,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        primaryBlue: "#0D47A1", // Azul Marino
+        primaryGray: "#807144", // Azul Marino
         secondaryYellow: "#FFC107", // Amarillo Mostaza
         accentGreen: "#4CAF50", // Verde Esmeralda
         lightGray: "#F5F5F5", // Gris Claro
         darkGray: "#757575", // Gris Oscuro
         white: "#FFFFFF", // Blanco
+      },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+        lato: ["Lato", "sans-serif"], // Agregamos Poppins como fuente personalizada
       },
     },
   },

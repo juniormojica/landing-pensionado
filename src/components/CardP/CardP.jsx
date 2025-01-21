@@ -47,7 +47,7 @@ const CardP = ({plan, formatPrice, handleWhatsAppClick}) => {
           {/* CTA Button */}
           <button 
             onClick={handleWhatsAppClick}
-            className="w-full py-3 px-6 rounded-xl bg-black text-white font-medium hover:bg-gray-800 transition-colors duration-200">
+            className="w-full py-3 px-6 rounded-xl bg-black text-white  hover:bg-gray-800 transition-colors duration-200 font-lato font-bold">
             Reservar Ahora
           </button>
         </div>
