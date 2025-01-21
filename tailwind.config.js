@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        primaryGray: "#807144", // Azul Marino
+        primaryGray: "#804240", // Azul Marino
         secondaryYellow: "#FFC107", // Amarillo Mostaza
         accentGreen: "#4CAF50", // Verde Esmeralda
         lightGray: "#F5F5F5", // Gris Claro
