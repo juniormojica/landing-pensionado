@@ -53,4 +53,16 @@ const FeatureCard = ({ feature, index }) => {
 
   export default FeatureCard
 
-  FeatureCard.propTypes = { }
+  import PropTypes from "prop-types";
+
+  // Define las PropTypes
+  FeatureCard.propTypes = {
+    feature: PropTypes.shape({
+      icon: PropTypes.elementType.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      color: PropTypes.string,
+    }).isRequired,
+    index: PropTypes.number.isRequired,
+  };
+  
