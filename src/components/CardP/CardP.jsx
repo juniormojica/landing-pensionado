@@ -51,7 +51,7 @@ const CardP = ({plan, formatPrice, handleWhatsAppClick}) => {
               <div className="flex-1">
                 <p className="text-gray-700">
                   Alimentación 3 veces al día
-                  <span className="block text-sm text-gray-500">(Domingo solo almuerzo)</span>
+                  <span className="block text-sm text-gray-500">(Luneas a Sabado)</span>
                 </p>
               </div>
               <span className="font-bold text-gray-900">
