@@ -8,20 +8,31 @@ import CardPricing from './components/CardPricing/CardPricing'
 import Map	 from './components/Map/Map'
 
 
-import cuarto1 from './assets/cuarto1.jpeg'
-import cuarto2 from './assets/cuarto2.jpeg'
-import cuarto3 from './assets/cuarto3.jpg'
+import cuarto2 from './assets/cuarto2.0.png'
+import cuarto21 from './assets/cuarto2.1.png'
+import cuarto22 from './assets/cuarto2.2.png'
+import cuarto23  from './assets/cuarto2.3.png'
+import cuarto24  from './assets/cuarto2.4.png'
+
 const imagenes = [
-  {
-    src: cuarto1,
-    disponibilidad: 'Disponible',
-  },
   {
     src: cuarto2,
     disponibilidad: 'Disponible',
   },
   {
-    src: cuarto3,
+    src: cuarto21,
+    disponibilidad: 'Disponible',
+  },
+  {
+    src: cuarto22,
+    disponibilidad: 'Disponible',
+  },
+  {
+    src: cuarto23,
+    disponibilidad: 'Disponible',
+  },
+  {
+    src: cuarto24,
     disponibilidad: 'Disponible',
   },
 ];
@@ -30,7 +41,7 @@ export default function App() {
     <div className="min-h-screen flex flex-col">
      
       <Header />
-      <Hero />
+      <Hero  />
       <main className="flex-grow">
       <Features />
         <Carousel images={imagenes}/>

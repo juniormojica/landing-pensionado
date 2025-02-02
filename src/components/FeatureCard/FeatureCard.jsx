@@ -37,16 +37,7 @@ const FeatureCard = ({ feature, index }) => {
           {feature.description}
         </p>
   
-        <motion.div 
-          className="mt-4"
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        >
-          <a href="#" className="text-accentGreen text-sm font-semibold hover:text-secondaryYellow transition-colors duration-300">
-            Saber más →
-          </a>
-        </motion.div>
+       
       </motion.div>
     );
   };

@@ -54,7 +54,7 @@ const Carousel = ({ images }) => {
   };
 
   return (
-    <div className="py-12 bg-gray-50">
+    <div  id='galeria' className="py-12 bg-gray-50">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">
           Nuestras Habitaciones
@@ -84,7 +84,7 @@ const Carousel = ({ images }) => {
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                     <div className="flex items-center justify-between">
                       <div>
-                        <h3 className="text-xl font-semibold mb-2">Habitación {currentIndex + 1}</h3>
+                      
                         <p className="text-sm">Estado: {images[currentIndex].disponibilidad}</p>
                       </div>
                       <span className="bg-secondaryYellow text-black px-4 py-1 rounded-full text-sm font-medium">

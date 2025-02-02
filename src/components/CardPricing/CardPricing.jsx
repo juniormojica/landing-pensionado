@@ -103,7 +103,7 @@ const CardPricing = () => {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+    <section id="planes" className="py-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
       <motion.div 
         className="container mx-auto px-4"
         variants={containerVariants}

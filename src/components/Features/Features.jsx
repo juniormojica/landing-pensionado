@@ -30,7 +30,7 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="py-16 bg-gradient-to-b from-white to-gray-50">
+    <section  id="caracteristicas"  className="py-6 bg-gradient-to-b from-white to-gray-50">
       <div className="container mx-auto px-4">
         <motion.div 
           className="text-center mb-12"
@@ -58,13 +58,7 @@ export default function Features() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <motion.button 
-            className="bg-secondaryYellow text-black px-8 py-3 rounded-lg font-semibold hover:bg-accentGreen hover:text-white transition-all duration-300 transform hover:-translate-y-1"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Ver todas las comodidades
-          </motion.button>
+       
         </motion.div>
       </div>
     </section>
