@@ -8,11 +8,11 @@ import CardPricing from './components/CardPricing/CardPricing'
 import Map	 from './components/Map/Map'
 
 
-import cuarto2 from '../public/cuarto2.0.png'
-import cuarto21 from '../public/cuarto2.1.png'
-import cuarto22 from '../public/cuarto2.2.png'
-import cuarto23  from '../public/cuarto2.3.png'
-import cuarto24  from '../public/cuarto2.4.png'
+import cuarto2 from './assets/cuarto2.0.png'
+import cuarto21 from './assets/cuarto2.1.png'
+import cuarto22 from './assets/cuarto2.2.png'
+import cuarto23  from './assets/cuarto2.3.png'
+import cuarto24  from './assets/cuarto2.4.png'
 
 const imagenes = [
   {
