@@ -29,7 +29,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Tu hogar estudiantil con todas las comodidades a solo 5 minutos de UPC.
+            Tu hogar estudiantil con todas las comodidades a solo 3 Cuadras de UPC.
             Ambiente seguro y acogedor para que te enfoques en tus estudios.
           </motion.p>
           <motion.div 
