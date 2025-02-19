@@ -45,7 +45,7 @@ const planPricings = [
     ],
     additionals: {
       food: 500000,
-      airConditioning: 50000
+      airConditioning: 100000
     }
   }
 ];
