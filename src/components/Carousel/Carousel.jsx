@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import PropTypes from 'prop-types';
+import Availability from '../Availability/Availability';
 
 const Carousel = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -54,55 +55,59 @@ const Carousel = ({ images }) => {
   };
 
   return (
-    <div  id='galeria' className="py-12 bg-gray-50">
+    <div id='galeria' className="py-12 bg-gray-50">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">
           Nuestras Habitaciones
         </h2>
         <div className="relative max-w-5xl mx-auto">
-          <div className="relative aspect-video overflow-hidden rounded-xl shadow-xl touch-pan-y">
-            <AnimatePresence mode="popLayout" initial={false} custom={direction}>
-              <motion.div
-                key={currentIndex}
-                custom={direction}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{
-                  x: { type: "tween", duration: 0.35 },
-                  opacity: { duration: 0.25 }
-                }}
-                drag="x"
-                dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.7}
-                onDragEnd={handleDragEnd}
-                className="absolute inset-0 cursor-grab active:cursor-grabbing"
-              >
-                {/* Overlay con información */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 pointer-events-none">
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <div className="flex items-center justify-between">
-                      <div>
-                      
-                        <p className="text-sm">Estado: {images[currentIndex].disponibilidad}</p>
+          {/* Contenedor modificado con altura responsiva y adaptable */}
+          <div className="relative overflow-hidden rounded-xl shadow-xl touch-pan-y">
+            {/* Establecemos un aspect-ratio adaptable y altura máxima */}
+            <div className="relative w-full aspect-[16/10] md:aspect-[16/9] max-h-[70vh] md:max-h-[80vh]">
+              <AnimatePresence mode="popLayout" initial={false} custom={direction}>
+                <motion.div
+                  key={currentIndex}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    x: { type: "tween", duration: 0.35 },
+                    opacity: { duration: 0.25 }
+                  }}
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.7}
+                  onDragEnd={handleDragEnd}
+                  className="absolute inset-0 cursor-grab active:cursor-grabbing"
+                >
+                  {/* Overlay con información */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 pointer-events-none">
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                      <div className="flex items-center justify-between">
+                        <Availability 
+                          status={images[currentIndex].disponibilidad} 
+                          label={images[currentIndex].label} 
+                        />
+                        <span className="bg-secondaryYellow text-black px-4 py-1 rounded-full text-sm font-medium">
+                          {currentIndex + 1} / {images.length}
+                        </span>
                       </div>
-                      <span className="bg-secondaryYellow text-black px-4 py-1 rounded-full text-sm font-medium">
-                        {currentIndex + 1} / {images.length}
-                      </span>
                     </div>
                   </div>
-                </div>
 
-                {/* Imagen principal */}
-                <img
-                  src={images[currentIndex].src}
-                  alt={`Habitación ${currentIndex + 1}`}
-                  className="w-full h-full object-cover select-none"
-                  draggable="false"
-                />
-              </motion.div>
-            </AnimatePresence>
+                  {/* Imagen principal - Modificada para mejor visualización */}
+                  <img
+                    src={images[currentIndex].src}
+                    alt={images[currentIndex].label || `Habitación ${currentIndex + 1}`}
+                    className="w-full h-full object-contain md:object-contain bg-gray-900/90"
+                    draggable="false"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
 
             {/* Controles - Ocultos en móvil */}
             <motion.button 
@@ -135,18 +140,26 @@ const Carousel = ({ images }) => {
             </div>
           </div>
 
-          {/* Miniaturas */}
-          <div className="flex justify-center gap-2 mt-4">
-            {images.map((_, index) => (
+          {/* Miniaturas - Ahora con vista previa más grande */}
+          <div className="grid grid-cols-5 gap-2 mt-4 overflow-x-auto pb-2 px-2 hide-scrollbar">
+            {images.map((image, index) => (
               <motion.button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`h-2 rounded-full transition-all duration-200 ${
-                  currentIndex === index ? 'bg-accentGreen w-4' : 'bg-gray-300 w-2'
-                }`}
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-              />
+                className={`${
+                  currentIndex === index 
+                    ? 'ring-2 ring-accentGreen ring-offset-2' 
+                    : 'opacity-70 hover:opacity-100'
+                } rounded-md overflow-hidden transition-all duration-200`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <img 
+                  src={image.src} 
+                  alt={image.label}
+                  className="w-full h-16 object-cover"
+                />
+              </motion.button>
             ))}
           </div>
         </div>
@@ -160,8 +173,22 @@ Carousel.propTypes = {
     PropTypes.shape({
       src: PropTypes.string.isRequired,
       disponibilidad: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
     })
   ).isRequired,
 };
+
+// Estilo para ocultar la barra de desplazamiento pero mantener la funcionalidad
+const styleSheet = document.createElement("style");
+styleSheet.textContent = `
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;             /* Chrome, Safari and Opera */
+  }
+`;
+document.head.appendChild(styleSheet);
 
 export default Carousel;

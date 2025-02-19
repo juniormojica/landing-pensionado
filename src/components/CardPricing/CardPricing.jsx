@@ -9,7 +9,7 @@ const planPricings = [
       'Cuarto Compartido Con otro Estudiante',
       "Cama individual",
       'Colchon ortopedico',
-      "TV por cable",
+     
       "Baño privado",
       "WiFi ",
       'Acceso a cocina',
@@ -27,12 +27,12 @@ const planPricings = [
   },
   {
     packageName: "Habitacion Individual",
-    price: 600000,
+    price: 550000,
     features: [
       'Cuarto Privado',
       "Cama individual",
-      'Colchon ortopedico',
-      "TV por cable",
+      'Colchon ',
+     
       "Baño privado",
       "WiFi ",
       'Acceso a cocina',
