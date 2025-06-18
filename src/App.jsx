@@ -34,6 +34,7 @@ import h41 from './assets/h41.jpg';
 import h42 from './assets/h42.jpg';
 import p2 from './assets/p2.jpg';
 import salacomedor from './assets/salacomedor.jpg';
+import PromoVideo from './components/PromoVideo/PromoVideo'
 
 const imagenes = [
   { src: entrada, disponibilidad: 'Disponible', label: 'Entrada Principal' },
@@ -77,6 +78,7 @@ export default function App() {
      
       <Header />
       <Hero  />
+      <PromoVideo/>
       <main className="flex-grow">
       <Features />
         <Carousel images={imagenes}/>
