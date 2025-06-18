@@ -264,29 +264,7 @@ const PromoVideo = () => {
         )}
       </div>
 
-      {/* Footer with Call to Action */}
-      <div className="bg-gray-50 px-8 py-8">
-        <div className="text-center space-y-6">
-          <div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-3">
-              ¿Te gusta lo que ves?
-            </h3>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
-              Tu hogar estudiantil con todas las comodidades a solo 3 cuadras de UPC. 
-              Ambiente seguro y acogedor para que te enfoques en tus estudios.
-            </p>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg w-full sm:w-auto">
-              Reserva tu habitación
-            </button>
-            <button className="bg-white hover:bg-gray-50 text-gray-700 px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 hover:scale-105 border-2 border-yellow-400 hover:border-yellow-500 w-full sm:w-auto">
-              Ver habitaciones
-            </button>
-          </div>
-        </div>
-      </div>
+    
 
       {/* Mobile Optimization Notice */}
       <div className="sm:hidden bg-green-50 px-6 py-4 border-t border-green-100">
