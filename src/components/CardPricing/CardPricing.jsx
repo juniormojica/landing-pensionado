@@ -4,7 +4,7 @@ import CardP from "../CardP/CardP";
 const planPricings = [
   {
     packageName: "Habitacion Compartida",
-    price: 350000,
+    price: 370000,
     features: [
       'Cuarto Compartido Con otro Estudiante',
       "Cama individual",
@@ -27,7 +27,7 @@ const planPricings = [
   },
   {
     packageName: "Habitacion Individual",
-    price: 600000,
+    price: 520000,
     features: [
       'Cuarto Privado',
       "Cama individual",
