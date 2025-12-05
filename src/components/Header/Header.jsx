@@ -1,12 +1,16 @@
 import { useState } from 'react'
 import { Button } from "../ui/Button/Button"
 import { Menu, Home, Search, Bell } from "lucide-react"
-import { scrollToSection } from '../../utils/scrollToSection'
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const buttonStyles = "bg-secondaryYellow text-black hover:bg-accentGreen hover:text-white transition-colors duration-200"
 
+  const handleNavClick = (section) => {
+    window.location.hash = `#/${section}`;
+    setIsMenuOpen(false); // Close mobile menu after click
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 text-gray-900 dark:text-white shadow-lg">
@@ -16,12 +20,12 @@ export default function Header() {
           <h1 className="text-2xl font-bold">Pension UPC</h1>
         </div>
         <nav className="hidden md:flex space-x-4">
-          <Button variant="solid" className={buttonStyles} onClick={() => scrollToSection("inicio")}>Inicio</Button>
-          <Button variant="solid" className={buttonStyles} onClick={() => scrollToSection("caracteristicas")}>Caracteristicas</Button>
-          <Button variant="solid" className={buttonStyles} onClick={() => scrollToSection("galeria")}>Galeria</Button>
-          <Button variant="solid" className={buttonStyles} onClick={() => scrollToSection("planes")}>Planes</Button>
-          <Button variant="solid" className={buttonStyles} onClick={() => scrollToSection("simulador")}>Simulador</Button>
-          <Button variant="solid" className={buttonStyles} onClick={() => scrollToSection("contacto")}>Contacto</Button>
+          <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("inicio")}>Inicio</Button>
+          <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("caracteristicas")}>Caracteristicas</Button>
+          <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("galeria")}>Galeria</Button>
+          <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("planes")}>Planes</Button>
+          <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("simulador")}>Simulador</Button>
+          <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("contacto")}>Contacto</Button>
         </nav>
         <div className="flex items-center space-x-4">
           <Search className="h-5 w-5 cursor-pointer hover:text-accentGreen transition-colors duration-200" />
@@ -38,12 +42,12 @@ export default function Header() {
       {isMenuOpen && (
         <div className="md:hidden bg-white dark:bg-gray-900 p-4">
           <nav className="flex flex-col space-y-2">
-            <Button variant="solid" className={buttonStyles} onClick={() => scrollToSection("inicio")}>Inicio</Button>
-            <Button variant="solid" className={buttonStyles} onClick={() => scrollToSection("caracteristicas")}>Caracteristicas</Button>
-            <Button variant="solid" className={buttonStyles} onClick={() => scrollToSection("galeria")}>Galeria</Button>
-            <Button variant="solid" className={buttonStyles} onClick={() => scrollToSection("planes")}>Planes</Button>
-            <Button variant="solid" className={buttonStyles} onClick={() => scrollToSection("simulador")}>Simulador</Button>
-            <Button variant="solid" className={buttonStyles} onClick={() => scrollToSection("contacto")}>Contacto</Button>
+            <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("inicio")}>Inicio</Button>
+            <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("caracteristicas")}>Caracteristicas</Button>
+            <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("galeria")}>Galeria</Button>
+            <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("planes")}>Planes</Button>
+            <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("simulador")}>Simulador</Button>
+            <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("contacto")}>Contacto</Button>
           </nav>
         </div>
       )}

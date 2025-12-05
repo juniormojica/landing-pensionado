@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Header from './components/Header/Header'
 import Carousel from './components/Carousel/Carousel'
 import Features from './components/Features/Features'
@@ -73,7 +74,55 @@ const imagenes = [
   { src: cuartojr4, disponibilidad: 'Disponible', label: 'Suite Junior - Vista 4' },
   { src: banio3jr, disponibilidad: 'Disponible', label: 'Baño Suite Junior' },
 ];
+
 export default function App() {
+  // Hash-based routing for direct section links
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+
+      // Map hash routes to section IDs
+      const routeMap = {
+        '#/': 'inicio',
+        '#/inicio': 'inicio',
+        '#/caracteristicas': 'caracteristicas',
+        '#/galeria': 'galeria',
+        '#/planes': 'planes',
+        '#/simulador': 'simulador',
+        '#/contacto': 'contacto'
+      };
+
+      const sectionId = routeMap[hash];
+
+      if (sectionId) {
+        // Small delay to ensure DOM is ready
+        setTimeout(() => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            const headerOffset = 80; // Height of fixed header
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }, 100);
+      }
+    };
+
+    // Handle initial load
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
 
