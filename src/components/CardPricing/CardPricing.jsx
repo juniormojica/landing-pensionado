@@ -103,26 +103,26 @@ const CardPricing = () => {
   };
 
   return (
-    <section id="planes" className="py-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+    <section id="planes" className="py-12 md:py-16 lg:py-20 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
       <motion.div
-        className="container mx-auto px-4"
+        className="container mx-auto px-4 md:px-6 lg:px-8"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-10 md:mb-12 lg:mb-16"
           variants={headingVariants}
         >
           <motion.h2
-            className="text-4xl font-bold mb-4"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4"
             variants={itemVariants}
           >
             Planes Disponibles
           </motion.h2>
           <motion.p
-            className="text-gray-600 max-w-2xl mx-auto"
+            className="text-sm md:text-base lg:text-lg text-gray-600 max-w-2xl mx-auto px-4"
             variants={itemVariants}
           >
             Escoge el plan que mejor se adapte a tus necesidades. Todos incluyen servicios básicos y acceso a áreas comunes.
@@ -130,12 +130,13 @@ const CardPricing = () => {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-7xl mx-auto"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-10 xl:gap-12 max-w-6xl mx-auto justify-items-center"
           variants={containerVariants}
         >
           {planPricings.map((planPricing, index) => (
             <motion.div
               key={index}
+              className="w-full max-w-md"
               variants={itemVariants}
               whileHover={{
                 scale: 1.02,
@@ -153,21 +154,21 @@ const CardPricing = () => {
         </motion.div>
 
         <motion.div
-          className="mt-12 text-center"
+          className="mt-10 md:mt-12 lg:mt-16 text-center"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
           <motion.p
-            className="text-gray-600 mb-4"
+            className="text-sm md:text-base text-gray-600 mb-4"
             variants={itemVariants}
           >
             ¿Necesitas más información?
           </motion.p>
           <motion.button
             onClick={() => handleWhatsAppClick('Información General')}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors duration-200"
+            className="inline-flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors duration-200 text-sm md:text-base"
             variants={itemVariants}
             whileHover={{
               scale: 1.05,
