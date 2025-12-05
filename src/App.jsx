@@ -5,7 +5,8 @@ import Contact from './components/Contact/Contact'
 import Footer from './components/Footer/Footer'
 import Hero from './components/Hero/Hero'
 import CardPricing from './components/CardPricing/CardPricing'
-import Map	 from './components/Map/Map'
+import PriceSimulator from './components/PriceSimulator/PriceSimulator'
+import Map from './components/Map/Map'
 
 
 import banio3jr from './assets/banio3jr.jpg';
@@ -48,13 +49,13 @@ const imagenes = [
 
   { src: h1, disponibilidad: 'Disponible', label: 'Habitación 1' },
   { src: bh1, disponibilidad: 'Disponible', label: 'Baño Habitación 1' },
-  
+
   { src: cuarto2, disponibilidad: 'No Disponible', label: 'Habitación 2 - Vista 1' },
   { src: cuarto21, disponibilidad: 'No Disponible', label: 'Habitación 2 - Vista 2' },
   { src: cuarto22, disponibilidad: 'No Disponible', label: 'Habitación 2 - Vista 3' },
   { src: cuarto23, disponibilidad: 'No Disponible', label: 'Habitación 2 - Vista 4' },
   { src: cuarto24, disponibilidad: 'No Disponible', label: 'Habitación 2 - Vista 5' },
-  
+
   { src: h3, disponibilidad: 'No Disponible', label: 'Habitación 3' },
   { src: h11, disponibilidad: 'No Disponible', label: 'Habitación 1 - Vista 2' },
   { src: h31, disponibilidad: 'No Disponible', label: 'Habitación 3 - Vista 2' },
@@ -63,7 +64,7 @@ const imagenes = [
   { src: h41, disponibilidad: 'Disponible', label: 'Habitación 4 - Vista 1' },
   { src: h42, disponibilidad: 'Disponible', label: 'Habitación 4 - Vista 2' },
   { src: banioh4, disponibilidad: 'Disponible', label: 'Baño Habitación 4' },
- 
+
   { src: bh3, disponibilidad: 'Disponible', label: 'Baño Habitación 3' },
 
   { src: cuartojr, disponibilidad: 'Disponible', label: 'Suite Junior - Vista 1' },
@@ -75,18 +76,19 @@ const imagenes = [
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
-     
+
       <Header />
-      <Hero  />
-      <PromoVideo/>
+      <Hero />
+      <PromoVideo />
       <main className="flex-grow">
-      <Features />
-        <Carousel images={imagenes}/>
+        <Features />
+        <Carousel images={imagenes} />
         <Contact >
           Apartar Cupo
         </Contact >
-        
+
         <CardPricing />
+        <PriceSimulator />
       </main>
       <Contact />
       <Map />

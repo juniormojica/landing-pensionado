@@ -4,12 +4,12 @@ import CardP from "../CardP/CardP";
 const planPricings = [
   {
     packageName: "Habitacion Compartida",
-    price: 370000,
+    price: 380000,
     features: [
       'Cuarto Compartido Con otro Estudiante',
       "Cama individual",
       'Colchon ortopedico',
-     
+
       "Baño privado",
       "WiFi ",
       'Acceso a cocina',
@@ -27,12 +27,12 @@ const planPricings = [
   },
   {
     packageName: "Habitacion Individual",
-    price: 520000,
+    price: 530000,
     features: [
       'Cuarto Privado',
       "Cama individual",
       'Colchon ',
-     
+
       "Baño privado",
       "WiFi ",
       'Acceso a cocina',
@@ -104,24 +104,24 @@ const CardPricing = () => {
 
   return (
     <section id="planes" className="py-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
-      <motion.div 
+      <motion.div
         className="container mx-auto px-4"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >
-        <motion.div 
+        <motion.div
           className="text-center mb-12"
           variants={headingVariants}
         >
-          <motion.h2 
+          <motion.h2
             className="text-4xl font-bold mb-4"
             variants={itemVariants}
           >
             Planes Disponibles
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-gray-600 max-w-2xl mx-auto"
             variants={itemVariants}
           >
@@ -129,7 +129,7 @@ const CardPricing = () => {
           </motion.p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-7xl mx-auto"
           variants={containerVariants}
         >
@@ -137,41 +137,41 @@ const CardPricing = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.02,
                 transition: { duration: 0.2 }
               }}
               whileTap={{ scale: 0.98 }}
             >
-              <CardP 
-                plan={planPricing} 
-                formatPrice={formatPrice} 
-                handleWhatsAppClick={() => handleWhatsAppClick(planPricing.packageName)} 
+              <CardP
+                plan={planPricing}
+                formatPrice={formatPrice}
+                handleWhatsAppClick={() => handleWhatsAppClick(planPricing.packageName)}
               />
             </motion.div>
           ))}
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="mt-12 text-center"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <motion.p 
+          <motion.p
             className="text-gray-600 mb-4"
             variants={itemVariants}
           >
             ¿Necesitas más información?
           </motion.p>
-          <motion.button 
+          <motion.button
             onClick={() => handleWhatsAppClick('Información General')}
             className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors duration-200"
             variants={itemVariants}
-            whileHover={{ 
+            whileHover={{
               scale: 1.05,
-              backgroundColor: "rgb(229, 231, 235)" 
+              backgroundColor: "rgb(229, 231, 235)"
             }}
             whileTap={{ scale: 0.95 }}
           >
