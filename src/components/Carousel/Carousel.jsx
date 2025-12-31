@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, X, ZoomIn } from "lucide-react";
 import PropTypes from 'prop-types';
@@ -120,12 +120,12 @@ const Carousel = ({ images }) => {
   };
 
   // Agregar/remover event listener para teclas
-  useState(() => {
+  useEffect(() => {
     if (isModalOpen) {
       document.addEventListener('keydown', handleKeyDown);
       return () => document.removeEventListener('keydown', handleKeyDown);
     }
-  }, [isModalOpen]);
+  }, [isModalOpen, modalIndex]);
 
   return (
     <>
