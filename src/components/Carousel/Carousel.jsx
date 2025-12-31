@@ -105,7 +105,7 @@ const Carousel = ({ images }) => {
   // Manejar teclas del teclado para el modal
   const handleKeyDown = (e) => {
     if (!isModalOpen) return;
-    
+
     switch (e.key) {
       case 'Escape':
         closeModal();
@@ -162,9 +162,9 @@ const Carousel = ({ images }) => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 pointer-events-none">
                       <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                         <div className="flex items-center justify-between">
-                          <Availability 
-                            status={images[currentIndex].disponibilidad} 
-                            label={images[currentIndex].label} 
+                          <Availability
+                            status={images[currentIndex].disponibilidad}
+                            label={images[currentIndex].label}
                           />
                           <div className="flex items-center gap-2">
                             <span className="bg-secondaryYellow text-black px-4 py-1 rounded-full text-sm font-medium">
@@ -191,7 +191,7 @@ const Carousel = ({ images }) => {
               </div>
 
               {/* Controles - Ocultos en móvil */}
-              <motion.button 
+              <motion.button
                 onClick={prevSlide}
                 className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 bg-white/80 hover:bg-accentGreen hover:text-white rounded-full transition-colors duration-200 hidden md:block"
                 whileHover={{ scale: 1.1 }}
@@ -199,7 +199,7 @@ const Carousel = ({ images }) => {
               >
                 <ArrowLeft className="h-6 w-6" />
               </motion.button>
-              <motion.button 
+              <motion.button
                 onClick={nextSlide}
                 className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 bg-white/80 hover:bg-accentGreen hover:text-white rounded-full transition-colors duration-200 hidden md:block"
                 whileHover={{ scale: 1.1 }}
@@ -210,7 +210,7 @@ const Carousel = ({ images }) => {
 
               {/* Indicador de swipe y tap - Solo visible en móvil */}
               <div className="absolute bottom-20 left-0 right-0 flex justify-center md:hidden">
-                <motion.p 
+                <motion.p
                   className="text-white text-sm bg-black/50 px-4 py-2 rounded-full text-center"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -221,24 +221,23 @@ const Carousel = ({ images }) => {
               </div>
             </div>
 
-            {/* Miniaturas - Ahora con vista previa más grande */}
-            <div className="grid grid-cols-5 gap-2 mt-4 overflow-x-auto pb-2 px-2 hide-scrollbar">
+            {/* Miniaturas - Optimizado para móvil */}
+            <div className="grid grid-cols-3 md:grid-cols-5 gap-2 mt-4 overflow-x-auto pb-2 px-2 hide-scrollbar">
               {images.map((image, index) => (
                 <motion.button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`${
-                    currentIndex === index 
-                      ? 'ring-2 ring-accentGreen ring-offset-2' 
+                  className={`${currentIndex === index
+                      ? 'ring-2 ring-primary ring-offset-2'
                       : 'opacity-70 hover:opacity-100'
-                  } rounded-md overflow-hidden transition-all duration-200 relative group`}
+                    } rounded-md overflow-hidden transition-all duration-200 relative group`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <img 
-                    src={image.src} 
+                  <img
+                    src={image.src}
                     alt={image.label}
-                    className="w-full h-16 object-cover"
+                    className="w-full h-20 md:h-16 object-cover"
                   />
                   {/* Overlay con icono de zoom en hover */}
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
@@ -289,7 +288,7 @@ const Carousel = ({ images }) => {
               >
                 <ArrowLeft className="h-6 w-6" />
               </motion.button>
-              
+
               <motion.button
                 onClick={nextModalSlide}
                 className="absolute right-4 top-1/2 -translate-y-1/2 z-40 p-3 bg-white/20 hover:bg-white/30 rounded-full text-white transition-colors duration-200"
@@ -319,9 +318,9 @@ const Carousel = ({ images }) => {
               <div className="absolute bottom-4 left-0 right-0 flex justify-center">
                 <div className="bg-black/50 backdrop-blur-sm rounded-lg px-6 py-3 text-white">
                   <div className="flex items-center gap-4">
-                    <Availability 
-                      status={images[modalIndex].disponibilidad} 
-                      label={images[modalIndex].label} 
+                    <Availability
+                      status={images[modalIndex].disponibilidad}
+                      label={images[modalIndex].label}
                     />
                     <span className="text-sm">
                       {modalIndex + 1} / {images.length}
@@ -337,14 +336,13 @@ const Carousel = ({ images }) => {
                     <button
                       key={index}
                       onClick={() => setModalIndex(index)}
-                      className={`flex-shrink-0 w-12 h-8 rounded overflow-hidden transition-all duration-200 ${
-                        modalIndex === index 
-                          ? 'ring-2 ring-white ring-offset-1 ring-offset-black/50' 
+                      className={`flex-shrink-0 w-12 h-8 rounded overflow-hidden transition-all duration-200 ${modalIndex === index
+                          ? 'ring-2 ring-white ring-offset-1 ring-offset-black/50'
                           : 'opacity-60 hover:opacity-100'
-                      }`}
+                        }`}
                     >
-                      <img 
-                        src={image.src} 
+                      <img
+                        src={image.src}
                         alt={image.label}
                         className="w-full h-full object-cover"
                       />

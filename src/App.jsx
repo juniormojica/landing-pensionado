@@ -128,7 +128,6 @@ export default function App() {
 
       <Header />
       <Hero />
-      <PromoVideo />
       <main className="flex-grow">
         <Features />
         <Carousel images={imagenes} />
@@ -138,9 +137,11 @@ export default function App() {
 
         <CardPricing />
         <PriceSimulator />
+        <PromoVideo />
       </main>
-      <Contact />
       <Map />
+      <Contact />
+
       <Footer />
     </div>
   )

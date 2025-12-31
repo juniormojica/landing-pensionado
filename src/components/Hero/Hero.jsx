@@ -5,9 +5,9 @@ import { scrollToSection } from "../../utils/scrollToSection";
 
 const Hero = () => {
   return (
-    <div id='inicio' className="relative min-h-[300px] w-full bg-gradient-to-b from-secondaryYellow/10 to-white pt-[98px]">
+    <div id='inicio' className="relative min-h-[300px] w-full bg-gradient-to-b from-primaryLight/10 to-white pt-20 md:pt-24">
       <div className="absolute inset-0 z-0 bg-[url('/path-to-your-image.jpg')] bg-cover bg-center opacity-10" />
-      <div className="container relative z-10 mx-auto px-4 py-12 lg:py-20">
+      <div className="container relative z-10 mx-auto px-4 py-8 md:py-12 lg:py-16">
         <motion.div
           onClick={() => scrollToSection("galeria")}
           className="mx-auto max-w-4xl text-center"
@@ -16,7 +16,7 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="mb-6 font-bold text-4xl md:text-5xl lg:text-6xl bg-heroText bg-clip-text text-transparent"
+            className="mb-4 md:mb-6 font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-primary to-primaryDark bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -24,7 +24,7 @@ const Hero = () => {
             Vive en la mejor pensión cercana a la UPC en Valledupar!
           </motion.h1>
           <motion.p
-            className="mb-8 text-lg md:text-2xl text-gray-700 font-light"
+            className="mb-6 md:mb-8 text-base md:text-lg lg:text-xl text-gray-700 font-light"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -33,7 +33,7 @@ const Hero = () => {
             Ambiente seguro y acogedor para que te enfoques en tus estudios.
           </motion.p>
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -41,25 +41,22 @@ const Hero = () => {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 handleClick={() => {
-                  const phoneNumber = '+573218710632'; // Número de teléfono
-                  const message = '¡Hola! Me gustaría apartar una habitacion de  pensionados.'; // Mensaje predeterminado
-
+                  const phoneNumber = '+573218710632';
+                  const message = '¡Hola! Me gustaría apartar una habitacion de pensionados.';
                   const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-
-                  // Abrir el enlace de WhatsApp en una nueva ventana o pestaña
                   window.open(whatsappURL, '_blank');
                 }}
                 variant="solid"
-                className="bg-accentGreen text-white hover:bg-secondaryYellow hover:text-black transition-all px-8 py-3 text-lg"
+                className="bg-primary text-white hover:bg-primaryDark transition-all px-6 md:px-8 py-3 text-base md:text-lg min-h-[48px] w-full sm:w-auto"
               >
                 Reserva tu habitación
               </Button>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
-
+                handleClick={() => scrollToSection("galeria")}
                 variant="outline"
-                className="border-2 border-secondaryYellow text-black hover:bg-secondaryYellow transition-all px-8 py-3 text-lg"
+                className="border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all px-6 md:px-8 py-3 text-base md:text-lg min-h-[48px] w-full sm:w-auto"
               >
                 Ver habitaciones
               </Button>

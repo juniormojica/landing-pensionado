@@ -1,56 +1,106 @@
 import { useState } from 'react'
-import { Button } from "../ui/Button/Button"
-import { Menu, Home, Search, Bell } from "lucide-react"
+import { Menu, X } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  const buttonStyles = "bg-secondaryYellow text-black hover:bg-accentGreen hover:text-white transition-colors duration-200"
+  const linkStyles = "text-gray-700 hover:text-primary transition-colors duration-200 font-medium cursor-pointer"
 
   const handleNavClick = (section) => {
     window.location.hash = `#/${section}`;
-    setIsMenuOpen(false); // Close mobile menu after click
+    setIsMenuOpen(false);
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 text-gray-900 dark:text-white shadow-lg">
-      <div className="container mx-auto px-4 py-6 flex justify-between items-center">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        {/* Logo */}
         <div className="flex items-center">
-          <Home className="h-6 w-6 mr-2" />
-          <h1 className="text-2xl font-bold">Pension UPC</h1>
+          <h1 className="text-2xl font-bold text-primary">Pensión UPC</h1>
         </div>
-        <nav className="hidden md:flex space-x-4">
-          <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("inicio")}>Inicio</Button>
-          <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("caracteristicas")}>Caracteristicas</Button>
-          <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("galeria")}>Galeria</Button>
-          <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("planes")}>Planes</Button>
-          <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("simulador")}>Simulador</Button>
-          <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("contacto")}>Contacto</Button>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex space-x-6">
+          <button className={linkStyles} onClick={() => handleNavClick("inicio")}>Inicio</button>
+          <button className={linkStyles} onClick={() => handleNavClick("caracteristicas")}>Características</button>
+          <button className={linkStyles} onClick={() => handleNavClick("galeria")}>Galería</button>
+          <button className={linkStyles} onClick={() => handleNavClick("planes")}>Planes</button>
+          <button className={linkStyles} onClick={() => handleNavClick("simulador")}>Simulador</button>
+          <button className={linkStyles} onClick={() => handleNavClick("contacto")}>Contacto</button>
         </nav>
-        <div className="flex items-center space-x-4">
-          <Search className="h-5 w-5 cursor-pointer hover:text-accentGreen transition-colors duration-200" />
-          <Bell className="h-5 w-5 cursor-pointer hover:text-accentGreen transition-colors duration-200" />
-          <Button
-            variant="outline"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="hover:bg-accentGreen hover:text-white transition-colors duration-200"
-          >
-            <Menu className="h-5 w-5" />
-          </Button>
-        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+          aria-label="Abrir menú"
+        >
+          <Menu className="h-6 w-6 text-gray-700" />
+        </button>
       </div>
-      {isMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900 p-4">
-          <nav className="flex flex-col space-y-2">
-            <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("inicio")}>Inicio</Button>
-            <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("caracteristicas")}>Caracteristicas</Button>
-            <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("galeria")}>Galeria</Button>
-            <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("planes")}>Planes</Button>
-            <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("simulador")}>Simulador</Button>
-            <Button variant="solid" className={buttonStyles} onClick={() => handleNavClick("contacto")}>Contacto</Button>
-          </nav>
-        </div>
-      )}
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            className="fixed inset-0 bg-white z-50 md:hidden"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'tween', duration: 0.3 }}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              aria-label="Cerrar menú"
+            >
+              <X className="h-6 w-6 text-gray-700" />
+            </button>
+
+            {/* Mobile Navigation */}
+            <nav className="flex flex-col p-6 mt-16 space-y-1">
+              <button
+                className="text-left py-4 text-lg border-b border-gray-200 hover:text-primary transition-colors"
+                onClick={() => handleNavClick("inicio")}
+              >
+                Inicio
+              </button>
+              <button
+                className="text-left py-4 text-lg border-b border-gray-200 hover:text-primary transition-colors"
+                onClick={() => handleNavClick("caracteristicas")}
+              >
+                Características
+              </button>
+              <button
+                className="text-left py-4 text-lg border-b border-gray-200 hover:text-primary transition-colors"
+                onClick={() => handleNavClick("galeria")}
+              >
+                Galería
+              </button>
+              <button
+                className="text-left py-4 text-lg border-b border-gray-200 hover:text-primary transition-colors"
+                onClick={() => handleNavClick("planes")}
+              >
+                Planes
+              </button>
+              <button
+                className="text-left py-4 text-lg border-b border-gray-200 hover:text-primary transition-colors"
+                onClick={() => handleNavClick("simulador")}
+              >
+                Simulador
+              </button>
+              <button
+                className="text-left py-4 text-lg border-b border-gray-200 hover:text-primary transition-colors"
+                onClick={() => handleNavClick("contacto")}
+              >
+                Contacto
+              </button>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }
