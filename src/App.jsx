@@ -8,6 +8,7 @@ import Hero from './components/Hero/Hero'
 import CardPricing from './components/CardPricing/CardPricing'
 import PriceSimulator from './components/PriceSimulator/PriceSimulator'
 import Map from './components/Map/Map'
+import AboutUs from './components/AboutUs/AboutUs'
 
 
 import banio3jr from './assets/banio3jr.jpg';
@@ -89,6 +90,7 @@ export default function App() {
         '#/galeria': 'galeria',
         '#/planes': 'planes',
         '#/simulador': 'simulador',
+        '#/nosotros': 'nosotros',
         '#/contacto': 'contacto'
       };
 
@@ -131,17 +133,13 @@ export default function App() {
       <main className="flex-grow">
         <Features />
         <Carousel images={imagenes} />
-        <Contact >
-          Apartar Cupo
-        </Contact >
-
         <CardPricing />
         <PriceSimulator />
         <PromoVideo />
+        <AboutUs />
       </main>
       <Map />
       <Contact />
-
       <Footer />
     </div>
   )

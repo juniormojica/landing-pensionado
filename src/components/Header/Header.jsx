@@ -27,6 +27,7 @@ export default function Header() {
           <button className={linkStyles} onClick={() => handleNavClick("galeria")}>Galería</button>
           <button className={linkStyles} onClick={() => handleNavClick("planes")}>Planes</button>
           <button className={linkStyles} onClick={() => handleNavClick("simulador")}>Simulador</button>
+          <button className={linkStyles} onClick={() => handleNavClick("nosotros")}>Nosotros</button>
           <button className={linkStyles} onClick={() => handleNavClick("contacto")}>Contacto</button>
         </nav>
 
@@ -90,6 +91,12 @@ export default function Header() {
                 onClick={() => handleNavClick("simulador")}
               >
                 Simulador
+              </button>
+              <button
+                className="text-left py-4 text-lg border-b border-gray-200 hover:text-primary transition-colors"
+                onClick={() => handleNavClick("nosotros")}
+              >
+                Nosotros
               </button>
               <button
                 className="text-left py-4 text-lg border-b border-gray-200 hover:text-primary transition-colors"
