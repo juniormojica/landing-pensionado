@@ -34,15 +34,13 @@ export default defineConfig({
       },
     }),
   ],
+  // Esta sección reemplaza a Terser y es mucho más rápida
+  esbuild: {
+    drop: ['console', 'debugger'], // Elimina logs y debuggers en producción
+  },
   build: {
-    // Minification settings
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true, // Remove console.logs in production
-        drop_debugger: true,
-      },
-    },
+    // Usamos esbuild como minificador (nativo de Vite)
+    minify: 'esbuild',
     // Code splitting
     rollupOptions: {
       output: {
