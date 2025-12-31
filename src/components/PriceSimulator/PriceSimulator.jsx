@@ -62,7 +62,7 @@ const PriceSimulator = () => {
                     name: 'Sí, quiero aire acondicionado',
                     description: 'Disfruta de 8 horas de aire acondicionado diarias',
                     price: null, // Will be calculated based on room type
-                    getPriceByRoom: (roomType) => roomType === 'shared' ? 50000 : 100000
+                    getPriceByRoom: (roomType) => roomType === 'shared' ? 70000 : 120000
                 }
             ]
         },
@@ -82,7 +82,7 @@ const PriceSimulator = () => {
                     id: 'yes',
                     name: 'Plan de alimentación completo',
                     description: '3 comidas al día (Lunes a Sábado)',
-                    price: 500000,
+                    price: 630000,
                     popular: true
                 }
             ]

@@ -21,8 +21,8 @@ const planPricings = [
       'Escritorio',
     ],
     additionals: {
-      food: 500000,
-      airConditioning: 50000
+      food: 630000,
+      airConditioning: 70000
     }
   },
   {
@@ -44,8 +44,8 @@ const planPricings = [
       'Escritorio',
     ],
     additionals: {
-      food: 500000,
-      airConditioning: 100000
+      food: 630000,
+      airConditioning: 120000
     }
   }
 ];
