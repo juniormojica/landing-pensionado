@@ -179,12 +179,13 @@ const Carousel = ({ images }) => {
                       </div>
                     </div>
 
-                    {/* Imagen principal - Modificada para mejor visualización */}
+                    {/* Imagen principal - Con lazy loading */}
                     <img
                       src={images[currentIndex].src}
                       alt={images[currentIndex].label || `Habitación ${currentIndex + 1}`}
                       className="w-full h-full object-contain md:object-contain bg-gray-900/90"
                       draggable="false"
+                      loading="eager"
                     />
                   </motion.div>
                 </AnimatePresence>
@@ -228,8 +229,8 @@ const Carousel = ({ images }) => {
                   key={index}
                   onClick={() => goToSlide(index)}
                   className={`${currentIndex === index
-                      ? 'ring-2 ring-primary ring-offset-2'
-                      : 'opacity-70 hover:opacity-100'
+                    ? 'ring-2 ring-primary ring-offset-2'
+                    : 'opacity-70 hover:opacity-100'
                     } rounded-md overflow-hidden transition-all duration-200 relative group`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -238,6 +239,7 @@ const Carousel = ({ images }) => {
                     src={image.src}
                     alt={image.label}
                     className="w-full h-20 md:h-16 object-cover"
+                    loading="lazy"
                   />
                   {/* Overlay con icono de zoom en hover */}
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
@@ -311,6 +313,7 @@ const Carousel = ({ images }) => {
                   alt={images[modalIndex].label || `Habitación ${modalIndex + 1}`}
                   className="max-w-full max-h-full object-contain"
                   draggable="false"
+                  loading="lazy"
                 />
               </motion.div>
 
@@ -337,14 +340,15 @@ const Carousel = ({ images }) => {
                       key={index}
                       onClick={() => setModalIndex(index)}
                       className={`flex-shrink-0 w-12 h-8 rounded overflow-hidden transition-all duration-200 ${modalIndex === index
-                          ? 'ring-2 ring-white ring-offset-1 ring-offset-black/50'
-                          : 'opacity-60 hover:opacity-100'
+                        ? 'ring-2 ring-white ring-offset-1 ring-offset-black/50'
+                        : 'opacity-60 hover:opacity-100'
                         }`}
                     >
                       <img
                         src={image.src}
                         alt={image.label}
                         className="w-full h-full object-cover"
+                        loading="lazy"
                       />
                     </button>
                   ))}
