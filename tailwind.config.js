@@ -4,6 +4,14 @@ export default {
     './src/**/*.{js,ts,jsx,tsx}',],
   theme: {
     extend: {
+      screens: {
+        'xs': '375px',   // Standard phones (iPhone SE, etc.)
+        'sm': '430px',   // Large phones (iPhone 14 Pro Max, Poco M3, etc.)
+        'md': '768px',   // Tablets
+        'lg': '1024px',  // Small laptops
+        'xl': '1280px',  // Desktops
+        '2xl': '1536px', // Large screens
+      },
       colors: {
         // Identidad de marca - Verde primario
         primary: "#4CAF50",        // Verde principal

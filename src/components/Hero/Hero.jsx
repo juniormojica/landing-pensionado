@@ -16,7 +16,7 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="mb-4 md:mb-6 font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-primary to-primaryDark bg-clip-text text-transparent"
+            className="mb-4 sm:mb-5 md:mb-6 font-bold text-2xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-primary to-primaryDark bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -24,7 +24,7 @@ const Hero = () => {
             Vive en la mejor pensión cercana a la UPC en Valledupar!
           </motion.h1>
           <motion.p
-            className="mb-6 md:mb-8 text-base md:text-lg lg:text-xl text-gray-700 font-light"
+            className="mb-6 sm:mb-7 md:mb-8 text-base sm:text-lg md:text-lg lg:text-xl text-gray-700 font-light"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -33,7 +33,7 @@ const Hero = () => {
             Ambiente seguro y acogedor para que te enfoques en tus estudios.
           </motion.p>
           <motion.div
-            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center"
+            className="flex flex-col xs:flex-row gap-3 sm:gap-3 md:gap-4 justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
