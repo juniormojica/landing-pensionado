@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import PropTypes from 'prop-types';
 import {
     Home,
     Wind,
@@ -13,7 +14,7 @@ import {
     Calculator
 } from 'lucide-react';
 
-const PriceSimulator = () => {
+const PriceSimulator = ({ handleCTAClick }) => {
     const [currentStep, setCurrentStep] = useState(0);
     const [selections, setSelections] = useState({
         roomType: null,
@@ -172,18 +173,20 @@ const PriceSimulator = () => {
     };
 
     const handleWhatsAppClick = () => {
-        const phoneNumber = '3218710632';
-        const breakdown = getBreakdown();
-        const total = calculateTotal();
+        handleCTAClick(() => {
+            const phoneNumber = '3218710632';
+            const breakdown = getBreakdown();
+            const total = calculateTotal();
 
-        let message = '¡Hola! He usado el simulador de precios y me interesa:\n\n';
-        breakdown.forEach(item => {
-            message += `✓ ${item.name}: $${formatPrice(item.price)}\n`;
+            let message = '¡Hola! He usado el simulador de precios y me interesa:\n\n';
+            breakdown.forEach(item => {
+                message += `✓ ${item.name}: $${formatPrice(item.price)}\n`;
+            });
+            message += `\n💰 Total mensual: $${formatPrice(total)}`;
+
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
         });
-        message += `\n💰 Total mensual: $${formatPrice(total)}`;
-
-        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-        window.open(whatsappUrl, '_blank');
     };
 
     const currentStepData = steps[currentStep];
@@ -500,6 +503,10 @@ const PriceSimulator = () => {
             </div>
         </section>
     );
+};
+
+PriceSimulator.propTypes = {
+    handleCTAClick: PropTypes.func
 };
 
 export default PriceSimulator;

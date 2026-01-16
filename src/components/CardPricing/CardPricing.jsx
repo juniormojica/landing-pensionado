@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import CardP from "../CardP/CardP";
+import PropTypes from 'prop-types';
 
 const planPricings = [
   {
@@ -50,7 +51,7 @@ const planPricings = [
   }
 ];
 
-const CardPricing = () => {
+const CardPricing = ({ handleCTAClick }) => {
   const formatPrice = (price) => {
     return price.toLocaleString('es-CO', {
       style: 'decimal',
@@ -60,10 +61,12 @@ const CardPricing = () => {
   };
 
   const handleWhatsAppClick = (packageName) => {
-    const phoneNumber = '3218710632';
-    const message = `Hola, me interesa obtener información sobre el paquete: ${packageName}`;
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    handleCTAClick(() => {
+      const phoneNumber = '3218710632';
+      const message = `Hola, me interesa obtener información sobre el paquete: ${packageName}`;
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    });
   };
 
   const containerVariants = {
@@ -182,6 +185,10 @@ const CardPricing = () => {
       </motion.div>
     </section>
   );
+};
+
+CardPricing.propTypes = {
+  handleCTAClick: PropTypes.func
 };
 
 export default CardPricing;

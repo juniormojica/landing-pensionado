@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header/Header'
 import Carousel from './components/Carousel/Carousel'
 import Features from './components/Features/Features'
@@ -9,6 +9,7 @@ import CardPricing from './components/CardPricing/CardPricing'
 import PriceSimulator from './components/PriceSimulator/PriceSimulator'
 import Map from './components/Map/Map'
 import AboutUs from './components/AboutUs/AboutUs'
+import FullCapacityModal from './components/FullCapacityModal/FullCapacityModal'
 
 
 import banio3jr from './assets/banio3jr.jpg';
@@ -76,7 +77,12 @@ const imagenes = [
   { src: banio3jr, disponibilidad: 'Disponible', label: 'Baño Suite Junior' },
 ];
 
+// Configuración global de cupos
+const CUPOS_LLENOS = true;
+
 export default function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   // Hash-based routing for direct section links
   useEffect(() => {
     const handleHashChange = () => {
@@ -125,21 +131,44 @@ export default function App() {
     };
   }, []);
 
+  const handleCTAClick = (originalAction) => {
+    if (CUPOS_LLENOS) {
+      setIsModalOpen(true);
+    } else {
+      if (originalAction) originalAction();
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
+      <FullCapacityModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
 
       <Header />
-      <Hero />
+      <Hero
+        handleCTAClick={handleCTAClick}
+        cuposLlenos={CUPOS_LLENOS}
+      />
       <main className="flex-grow">
         <Features />
         <Carousel images={imagenes} />
-        <CardPricing />
-        <PriceSimulator />
+        <CardPricing
+          handleCTAClick={handleCTAClick}
+        />
+        <PriceSimulator
+          handleCTAClick={handleCTAClick}
+        />
         <PromoVideo />
-        <AboutUs />
+        <AboutUs
+          handleCTAClick={handleCTAClick}
+        />
       </main>
       <Map />
-      <Contact />
+      <Contact
+        handleCTAClick={handleCTAClick}
+      />
       <Footer />
     </div>
   )

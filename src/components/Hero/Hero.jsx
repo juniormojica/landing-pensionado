@@ -1,9 +1,9 @@
-// First, we need to import Framer Motion
 import { motion } from "framer-motion";
+import PropTypes from 'prop-types';
 import { Button } from "../ui/Button/Button";
 import { scrollToSection } from "../../utils/scrollToSection";
 
-const Hero = () => {
+const Hero = ({ handleCTAClick }) => {
   return (
     <div id='inicio' className="relative min-h-[300px] w-full bg-gradient-to-b from-primaryLight/10 to-white pt-20 md:pt-24">
       <div className="absolute inset-0 z-0 bg-[url('/path-to-your-image.jpg')] bg-cover bg-center opacity-10" />
@@ -40,12 +40,12 @@ const Hero = () => {
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
-                handleClick={() => {
+                handleClick={() => handleCTAClick(() => {
                   const phoneNumber = '+573218710632';
                   const message = '¡Hola! Me gustaría apartar una habitacion de pensionados.';
                   const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
                   window.open(whatsappURL, '_blank');
-                }}
+                })}
                 variant="solid"
                 className="bg-primary text-white hover:bg-primaryDark transition-all px-6 md:px-8 py-3 text-base md:text-lg min-h-[48px] w-full sm:w-auto"
               >
@@ -67,5 +67,9 @@ const Hero = () => {
     </div>
   );
 };
+
+Hero.propTypes = {
+  handleCTAClick: PropTypes.func
+}
 
 export default Hero
