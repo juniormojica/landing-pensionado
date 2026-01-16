@@ -41,17 +41,17 @@ import salacomedor from './assets/salacomedor.jpg';
 import PromoVideo from './components/PromoVideo/PromoVideo'
 
 const imagenes = [
-  { src: entrada, disponibilidad: 'Disponible', label: 'Entrada Principal' },
-  { src: entrada1, disponibilidad: 'Disponible', label: 'Entrada Lateral' },
+  { src: entrada, disponibilidad: 'No Disponible', label: 'Entrada Principal' },
+  { src: entrada1, disponibilidad: 'No Disponible', label: 'Entrada Lateral' },
 
-  { src: comedor, disponibilidad: 'Disponible', label: 'Comedor Principal' },
-  { src: comedor1, disponibilidad: 'Disponible', label: 'Comedor Auxiliar' },
+  { src: comedor, disponibilidad: 'No Disponible', label: 'Comedor Principal' },
+  { src: comedor1, disponibilidad: 'No Disponible', label: 'Comedor Auxiliar' },
 
-  { src: p2, disponibilidad: 'Disponible', label: 'Pasillo' },
+  { src: p2, disponibilidad: 'No Disponible', label: 'Pasillo' },
   { src: salacomedor, disponibilidad: 'Disponible', label: 'Sala-Comedor' },
 
-  { src: h1, disponibilidad: 'Disponible', label: 'Habitación 1' },
-  { src: bh1, disponibilidad: 'Disponible', label: 'Baño Habitación 1' },
+  { src: h1, disponibilidad: 'No Disponible', label: 'Habitación 1' },
+  { src: bh1, disponibilidad: 'No Disponible', label: 'Baño Habitación 1' },
 
   { src: cuarto2, disponibilidad: 'No Disponible', label: 'Habitación 2 - Vista 1' },
   { src: cuarto21, disponibilidad: 'No Disponible', label: 'Habitación 2 - Vista 2' },
@@ -64,17 +64,17 @@ const imagenes = [
   { src: h31, disponibilidad: 'No Disponible', label: 'Habitación 3 - Vista 2' },
   { src: h33, disponibilidad: 'No Disponible', label: 'Habitación 3 - Vista 3' },
 
-  { src: h41, disponibilidad: 'Disponible', label: 'Habitación 4 - Vista 1' },
-  { src: h42, disponibilidad: 'Disponible', label: 'Habitación 4 - Vista 2' },
-  { src: banioh4, disponibilidad: 'Disponible', label: 'Baño Habitación 4' },
+  { src: h41, disponibilidad: 'No Disponible', label: 'Habitación 4 - Vista 1' },
+  { src: h42, disponibilidad: 'No Disponible', label: 'Habitación 4 - Vista 2' },
+  { src: banioh4, disponibilidad: 'No Disponible', label: 'Baño Habitación 4' },
 
-  { src: bh3, disponibilidad: 'Disponible', label: 'Baño Habitación 3' },
+  { src: bh3, disponibilidad: 'No Disponible', label: 'Baño Habitación 3' },
 
-  { src: cuartojr, disponibilidad: 'Disponible', label: 'Suite Junior - Vista 1' },
-  { src: cuartojr2, disponibilidad: 'Disponible', label: 'Suite Junior - Vista 2' },
-  { src: cuartojr3, disponibilidad: 'Disponible', label: 'Suite Junior - Vista 3' },
-  { src: cuartojr4, disponibilidad: 'Disponible', label: 'Suite Junior - Vista 4' },
-  { src: banio3jr, disponibilidad: 'Disponible', label: 'Baño Suite Junior' },
+  { src: cuartojr, disponibilidad: 'No Disponible', label: 'Suite Junior - Vista 1' },
+  { src: cuartojr2, disponibilidad: 'No Disponible', label: 'Suite Junior - Vista 2' },
+  { src: cuartojr3, disponibilidad: 'No Disponible', label: 'Suite Junior - Vista 3' },
+  { src: cuartojr4, disponibilidad: 'No Disponible', label: 'Suite Junior - Vista 4' },
+  { src: banio3jr, disponibilidad: 'No Disponible', label: 'Baño Suite Junior' },
 ];
 
 // Configuración global de cupos
