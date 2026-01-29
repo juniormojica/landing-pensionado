@@ -41,23 +41,23 @@ import salacomedor from './assets/salacomedor.jpg';
 import PromoVideo from './components/PromoVideo/PromoVideo'
 
 const imagenes = [
-  { src: entrada, disponibilidad: 'No Disponible', label: 'Entrada Principal' },
-  { src: entrada1, disponibilidad: 'No Disponible', label: 'Entrada Lateral' },
+  { src: entrada, disponibilidad: 'Disponible', label: 'Entrada Principal' },
+  { src: entrada1, disponibilidad: 'Disponible', label: 'Entrada Lateral' },
 
-  { src: comedor, disponibilidad: 'No Disponible', label: 'Comedor Principal' },
-  { src: comedor1, disponibilidad: 'No Disponible', label: 'Comedor Auxiliar' },
+  { src: comedor, disponibilidad: 'Disponible', label: 'Comedor Principal' },
+  { src: comedor1, disponibilidad: 'Disponible', label: 'Comedor Auxiliar' },
 
-  { src: p2, disponibilidad: 'No Disponible', label: 'Pasillo' },
+  { src: p2, disponibilidad: 'Disponible', label: 'Pasillo' },
   { src: salacomedor, disponibilidad: 'Disponible', label: 'Sala-Comedor' },
 
   { src: h1, disponibilidad: 'No Disponible', label: 'Habitación 1' },
   { src: bh1, disponibilidad: 'No Disponible', label: 'Baño Habitación 1' },
 
-  { src: cuarto2, disponibilidad: 'No Disponible', label: 'Habitación 2 - Vista 1' },
-  { src: cuarto21, disponibilidad: 'No Disponible', label: 'Habitación 2 - Vista 2' },
-  { src: cuarto22, disponibilidad: 'No Disponible', label: 'Habitación 2 - Vista 3' },
-  { src: cuarto23, disponibilidad: 'No Disponible', label: 'Habitación 2 - Vista 4' },
-  { src: cuarto24, disponibilidad: 'No Disponible', label: 'Habitación 2 - Vista 5' },
+  { src: cuarto2, disponibilidad: 'Disponible', label: 'Habitación 2 - Vista 1' },
+  { src: cuarto21, disponibilidad: 'Disponible', label: 'Habitación 2 - Vista 2' },
+  { src: cuarto22, disponibilidad: 'Disponible', label: 'Habitación 2 - Vista 3' },
+  { src: cuarto23, disponibilidad: 'Disponible', label: 'Habitación 2 - Vista 4' },
+  { src: cuarto24, disponibilidad: 'Disponible', label: 'Habitación 2 - Vista 5' },
 
   { src: h3, disponibilidad: 'No Disponible', label: 'Habitación 3' },
   { src: h11, disponibilidad: 'No Disponible', label: 'Habitación 1 - Vista 2' },
@@ -78,7 +78,7 @@ const imagenes = [
 ];
 
 // Configuración global de cupos
-const CUPOS_LLENOS = true;
+const CUPOS_LLENOS = false;
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
