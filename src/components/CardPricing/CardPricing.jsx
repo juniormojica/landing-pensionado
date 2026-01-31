@@ -9,8 +9,6 @@ const planPricings = [
     features: [
       'Cuarto Compartido Con otro Estudiante',
       "Cama individual",
-      'Colchon ortopedico',
-
       "Baño privado",
       "WiFi ",
       'Acceso a cocina',
@@ -22,7 +20,7 @@ const planPricings = [
       'Escritorio',
     ],
     additionals: {
-      food: 630000,
+      food: 300000,
       airConditioning: 70000
     }
   },
@@ -45,7 +43,7 @@ const planPricings = [
       'Escritorio',
     ],
     additionals: {
-      food: 630000,
+      food: 300000,
       airConditioning: 120000
     }
   }

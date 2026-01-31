@@ -82,8 +82,8 @@ const PriceSimulator = ({ handleCTAClick }) => {
                 {
                     id: 'yes',
                     name: 'Plan de alimentación completo',
-                    description: '3 comidas al día (Lunes a Sábado)',
-                    price: 630000,
+                    description: 'Almuerzo Domingo a Domingo',
+                    price: 300000,
                     popular: true
                 }
             ]

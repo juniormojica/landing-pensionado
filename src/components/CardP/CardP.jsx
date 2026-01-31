@@ -1,13 +1,12 @@
 import { Check, Star } from 'lucide-react';
 import PropTypes from 'prop-types';
 
-const CardP = ({plan, formatPrice, handleWhatsAppClick}) => {
+const CardP = ({ plan, formatPrice, handleWhatsAppClick }) => {
   const isPopular = plan.packageName === "Habitacion Individual";
 
   return (
-    <div className={`w-full max-w-sm p-8 bg-white rounded-3xl shadow-lg transition-all duration-300 hover:shadow-2xl relative ${
-      isPopular ? 'border-2 border-accentGreen' : ''
-    }`}>
+    <div className={`w-full max-w-sm p-8 bg-white rounded-3xl shadow-lg transition-all duration-300 hover:shadow-2xl relative ${isPopular ? 'border-2 border-accentGreen' : ''
+      }`}>
       {isPopular && (
         <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
           <span className="bg-accentGreen text-white px-4 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
@@ -50,8 +49,8 @@ const CardP = ({plan, formatPrice, handleWhatsAppClick}) => {
               <Check className="h-5 w-5 text-accentGreen" />
               <div className="flex-1">
                 <p className="text-gray-700">
-                  Alimentación 3 veces al día
-                  <span className="block text-sm text-gray-500">(Luneas a Sabado)</span>
+                  Almuerzo
+                  <span className="block text-sm text-gray-500">(Lunes a Domingo)</span>
                 </p>
               </div>
               <span className="font-bold text-gray-900">
@@ -71,11 +70,11 @@ const CardP = ({plan, formatPrice, handleWhatsAppClick}) => {
         </div>
 
         {/* CTA Button */}
-        <button 
+        <button
           onClick={handleWhatsAppClick}
           className={`w-full py-4 px-6 rounded-xl font-bold transition-all duration-300 
-            ${isPopular 
-              ? 'bg-accentGreen text-white hover:bg-secondaryYellow hover:text-black' 
+            ${isPopular
+              ? 'bg-accentGreen text-white hover:bg-secondaryYellow hover:text-black'
               : 'bg-secondaryYellow text-black hover:bg-accentGreen hover:text-white'
             }`}>
           Reservar Ahora
