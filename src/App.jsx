@@ -10,6 +10,7 @@ import PriceSimulator from './components/PriceSimulator/PriceSimulator'
 import Map from './components/Map/Map'
 import AboutUs from './components/AboutUs/AboutUs'
 import FullCapacityModal from './components/FullCapacityModal/FullCapacityModal'
+import LunchMenu from './components/LunchMenu/LunchMenu'
 
 
 import banio3jr from './assets/banio3jr.jpg';
@@ -96,6 +97,7 @@ export default function App() {
         '#/galeria': 'galeria',
         '#/planes': 'planes',
         '#/simulador': 'simulador',
+        '#/almuerzos': 'almuerzos',
         '#/nosotros': 'nosotros',
         '#/contacto': 'contacto'
       };
@@ -160,6 +162,7 @@ export default function App() {
         <PriceSimulator
           handleCTAClick={handleCTAClick}
         />
+        <LunchMenu handleCTAClick={handleCTAClick} />
         <PromoVideo />
         <AboutUs
           handleCTAClick={handleCTAClick}
