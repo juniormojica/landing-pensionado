@@ -61,7 +61,7 @@ const LunchMenu = ({ handleCTAClick }) => {
 
         // We'll use a generic message for the menu
         const message = encodeURIComponent("¡Hola! Estoy interesado en el plan mensual de almuerzos de $300.000. ¿Me podrían dar más información?");
-        const whatsappUrl = `https://wa.me/573133604051?text=${message}`; // Using placeholder number, should be replaced if known or generic
+        const whatsappUrl = `https://wa.me/573218710632?text=${message}`; // Using placeholder number, should be replaced if known or generic
 
         // If we want to use the global handler:
         if (handleCTAClick) {
