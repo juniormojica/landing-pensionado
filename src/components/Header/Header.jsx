@@ -17,7 +17,7 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center">
-          <h1 className="text-2xl font-bold text-primary">Pensión UPC</h1>
+          <h1 className="text-2xl font-bold text-primary">Pensión UPC-Donde Maru</h1>
         </div>
 
         {/* Desktop Navigation */}
