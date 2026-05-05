@@ -6,7 +6,7 @@ import { scrollToSection } from "../../utils/scrollToSection";
 const Hero = ({ handleCTAClick }) => {
   return (
     <div id='inicio' className="relative min-h-[300px] w-full bg-gradient-to-b from-primaryLight/10 to-white pt-20 md:pt-24">
-      <div className="absolute inset-0 z-0 bg-[url('/path-to-your-image.jpg')] bg-cover bg-center opacity-10" />
+      <div className="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=1920&q=80')] bg-cover bg-center opacity-5" />
       <div className="container relative z-10 mx-auto px-4 py-8 md:py-12 lg:py-16">
         <motion.div
           onClick={() => scrollToSection("galeria")}
