@@ -10,6 +10,7 @@ import PriceSimulator from './components/PriceSimulator/PriceSimulator'
 import Map from './components/Map/Map'
 import AboutUs from './components/AboutUs/AboutUs'
 import FullCapacityModal from './components/FullCapacityModal/FullCapacityModal'
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
 
 
 
@@ -142,36 +143,56 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <FullCapacityModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
+    <ErrorBoundary>
+      <div className="min-h-screen flex flex-col">
+        <FullCapacityModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
 
-      <Header />
-      <Hero
-        handleCTAClick={handleCTAClick}
-        cuposLlenos={CUPOS_LLENOS}
-      />
-      <main className="flex-grow">
-        <Features />
-        <Carousel images={imagenes} />
-        <CardPricing
-          handleCTAClick={handleCTAClick}
-        />
-        <PriceSimulator
-          handleCTAClick={handleCTAClick}
-        />
-        <PromoVideo />
-        <AboutUs
-          handleCTAClick={handleCTAClick}
-        />
-      </main>
-      <Map />
-      <Contact
-        handleCTAClick={handleCTAClick}
-      />
-      <Footer />
-    </div>
+        <Header />
+        <ErrorBoundary>
+          <Hero
+            handleCTAClick={handleCTAClick}
+            cuposLlenos={CUPOS_LLENOS}
+          />
+        </ErrorBoundary>
+        <main className="flex-grow">
+          <ErrorBoundary>
+            <Features />
+          </ErrorBoundary>
+          <ErrorBoundary>
+            <Carousel images={imagenes} />
+          </ErrorBoundary>
+          <ErrorBoundary>
+            <CardPricing
+              handleCTAClick={handleCTAClick}
+            />
+          </ErrorBoundary>
+          <ErrorBoundary>
+            <PriceSimulator
+              handleCTAClick={handleCTAClick}
+            />
+          </ErrorBoundary>
+          <ErrorBoundary>
+            <PromoVideo />
+          </ErrorBoundary>
+          <ErrorBoundary>
+            <AboutUs
+              handleCTAClick={handleCTAClick}
+            />
+          </ErrorBoundary>
+        </main>
+        <ErrorBoundary>
+          <Map />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <Contact
+            handleCTAClick={handleCTAClick}
+          />
+        </ErrorBoundary>
+        <Footer />
+      </div>
+    </ErrorBoundary>
   )
 }
