@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import PropTypes from 'prop-types';
 import { Button } from "../ui/Button/Button";
 import { scrollToSection } from "../../utils/scrollToSection";
+import { openWhatsApp } from "../../utils/whatsapp";
 
 const Hero = ({ handleCTAClick }) => {
   return (
@@ -40,12 +41,7 @@ const Hero = ({ handleCTAClick }) => {
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
-                handleClick={() => handleCTAClick(() => {
-                  const phoneNumber = '+573218710632';
-                  const message = '¡Hola! Me gustaría apartar una habitacion de pensionados.';
-                  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-                  window.open(whatsappURL, '_blank');
-                })}
+                handleClick={() => handleCTAClick(() => openWhatsApp('reservation'))}
                 variant="solid"
                 className="bg-primary text-white hover:bg-primaryDark transition-all px-6 md:px-8 py-3 text-base md:text-lg min-h-[48px] w-full sm:w-auto"
               >

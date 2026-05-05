@@ -1,14 +1,9 @@
 import PropTypes from 'prop-types';
+import { openWhatsApp } from '../../utils/whatsapp';
+
 const Contact = ({ children = 'Apartar Cupo', handleCTAClick }) => {
   const handleContactClick = () => {
-    handleCTAClick(() => {
-      const phoneNumber = '+573218710632'; // Número de teléfono
-      const message = '¡Hola! Me gustaría apartar un cupo para la aplicación de pensionados.'; // Mensaje predeterminado
-
-      const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-
-      window.open(whatsappURL, '_blank');
-    });
+    handleCTAClick(() => openWhatsApp('pension'));
   };
 
   return (

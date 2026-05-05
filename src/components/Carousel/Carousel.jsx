@@ -179,13 +179,14 @@ const Carousel = ({ images }) => {
                       </div>
                     </div>
 
-                    {/* Imagen principal - Con lazy loading */}
+                    {/* Imagen principal - Eager para primer imagen, lazy para el resto */}
                     <img
                       src={images[currentIndex].src}
                       alt={images[currentIndex].label || `Habitación ${currentIndex + 1}`}
                       className="w-full h-full object-contain md:object-contain bg-gray-900/90"
                       draggable="false"
-                      loading="eager"
+                      loading={currentIndex === 0 ? "eager" : "lazy"}
+                      fetchpriority={currentIndex === 0 ? "high" : "auto"}
                     />
                   </motion.div>
                 </AnimatePresence>

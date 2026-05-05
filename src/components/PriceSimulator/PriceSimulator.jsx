@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PropTypes from 'prop-types';
+import { getWhatsAppUrl } from '../../utils/whatsapp';
 import {
     Home,
     Wind,
@@ -174,7 +175,6 @@ const PriceSimulator = ({ handleCTAClick }) => {
 
     const handleWhatsAppClick = () => {
         handleCTAClick(() => {
-            const phoneNumber = '3218710632';
             const breakdown = getBreakdown();
             const total = calculateTotal();
 
@@ -184,8 +184,7 @@ const PriceSimulator = ({ handleCTAClick }) => {
             });
             message += `\n💰 Total mensual: $${formatPrice(total)}`;
 
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
+            window.open(getWhatsAppUrl(message), '_blank');
         });
     };
 

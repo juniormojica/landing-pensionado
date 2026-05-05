@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import CardP from "../CardP/CardP";
 import PropTypes from 'prop-types';
+import { openWhatsApp } from '../../utils/whatsapp';
 
 const planPricings = [
   {
@@ -59,12 +60,7 @@ const CardPricing = ({ handleCTAClick }) => {
   };
 
   const handleWhatsAppClick = (packageName) => {
-    handleCTAClick(() => {
-      const phoneNumber = '3218710632';
-      const message = `Hola, me interesa obtener información sobre el paquete: ${packageName}`;
-      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, '_blank');
-    });
+    handleCTAClick(() => openWhatsApp(`Hola, me interesa obtener información sobre el paquete: ${packageName}`));
   };
 
   const containerVariants = {

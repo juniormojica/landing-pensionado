@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Award, Heart, Users, TrendingUp, Home, Shield } from 'lucide-react';
 import PropTypes from 'prop-types';
+import { openWhatsApp } from '../../utils/whatsapp';
 
 const AboutUs = ({ handleCTAClick }) => {
     const stats = [
@@ -188,12 +189,7 @@ const AboutUs = ({ handleCTAClick }) => {
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => handleCTAClick(() => {
-                            const phoneNumber = '3218710632';
-                            const message = '¡Hola! Me gustaría reservar una habitación.';
-                            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-                            window.open(whatsappUrl, '_blank');
-                        })}
+                        onClick={() => handleCTAClick(() => openWhatsApp('reservation'))}
                         className="bg-white text-primary px-8 py-4 rounded-full font-bold text-base sm:text-lg md:text-lg hover:bg-gray-100 transition-colors duration-300 shadow-lg inline-flex items-center gap-2 min-h-[48px]"
                     >
                         Aparta tu cupo

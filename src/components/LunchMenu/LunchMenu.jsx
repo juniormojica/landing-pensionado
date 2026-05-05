@@ -1,5 +1,6 @@
 import React from 'react';
 import { Utensils, Calendar, Clock, ChevronRight } from 'lucide-react';
+import { openWhatsApp } from '../../utils/whatsapp';
 
 const LunchMenu = ({ handleCTAClick }) => {
     const weeklyMenu = [
@@ -55,19 +56,12 @@ const LunchMenu = ({ handleCTAClick }) => {
     ];
 
     const handleWhatsAppClick = () => {
-        // Determine which action to take based on capacity
-        // If handleCTAClick is passed, it might handle logic like "Cupos Llenos"
-        // But for this specific component, the user asked for redirect to WhatsApp API
+        const message = "¡Hola! Estoy interesado en el plan mensual de almuerzos de $300.000. ¿Me podrían dar más información?";
 
-        // We'll use a generic message for the menu
-        const message = encodeURIComponent("¡Hola! Estoy interesado en el plan mensual de almuerzos de $300.000. ¿Me podrían dar más información?");
-        const whatsappUrl = `https://wa.me/573218710632?text=${message}`; // Using placeholder number, should be replaced if known or generic
-
-        // If we want to use the global handler:
         if (handleCTAClick) {
-            handleCTAClick(() => window.open(whatsappUrl, '_blank'));
+            handleCTAClick(() => openWhatsApp(message));
         } else {
-            window.open(whatsappUrl, '_blank');
+            openWhatsApp(message);
         }
     };
 
