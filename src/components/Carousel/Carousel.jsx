@@ -139,15 +139,33 @@ const Carousel = ({ images }) => {
 
   return (
     <>
-      <div id='galeria' className="py-12 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">
-            Nuestras Habitaciones
-          </h2>
+      <section id='galeria' className="relative py-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-20 -left-20 w-60 h-60 bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-accent/5 rounded-full blur-3xl" />
+        </div>
+        
+        <div className="container mx-auto px-4 relative">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-10"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-3">
+              Nuestras Habitaciones
+            </h2>
+            <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
+            <p className="text-gray-600 mt-3 max-w-xl mx-auto">
+              Explora nuestros espacios diseñados para tu comodidad y descanso
+            </p>
+          </motion.div>
+          
           <div className="relative max-w-5xl mx-auto">
-            {/* Contenedor modificado con altura responsiva y adaptable */}
-            <div className="relative overflow-hidden rounded-xl shadow-xl touch-pan-y">
-              {/* Establecemos un aspect-ratio adaptable y altura máxima */}
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-gray-100 touch-pan-y group">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
               <div className="relative w-full aspect-[16/10] md:aspect-[16/9] max-h-[70vh] md:max-h-[80vh]">
                 <AnimatePresence mode="popLayout" initial={false} custom={direction}>
                   <motion.div
@@ -168,7 +186,6 @@ const Carousel = ({ images }) => {
                     className="absolute inset-0 cursor-grab active:cursor-grabbing"
                     onClick={() => openModal(currentIndex)}
                   >
-                    {/* Overlay con información */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 pointer-events-none">
                       <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                         <div className="flex items-center justify-between">
@@ -176,12 +193,11 @@ const Carousel = ({ images }) => {
                             status={images[currentIndex].disponibilidad}
                             label={images[currentIndex].label}
                           />
-                          <div className="flex items-center gap-2">
-                            <span className="bg-secondaryYellow text-black px-4 py-1 rounded-full text-sm font-medium">
+                          <div className="flex items-center gap-3">
+                            <span className="bg-accent text-gray-900 px-4 py-1.5 rounded-full text-sm font-semibold shadow-lg">
                               {currentIndex + 1} / {images.length}
                             </span>
-                            {/* Indicador de zoom solo en móvil */}
-                            <div className="md:hidden bg-white/20 p-2 rounded-full">
+                            <div className="md:hidden bg-white/20 backdrop-blur-sm p-2 rounded-full">
                               <ZoomIn className="h-4 w-4" />
                             </div>
                           </div>
@@ -195,7 +211,7 @@ const Carousel = ({ images }) => {
                       <img
                         src={images[currentIndex].src}
                         alt={images[currentIndex].label || `Habitación ${currentIndex + 1}`}
-                        className="w-full h-full object-contain md:object-contain bg-gray-900/90"
+                        className="w-full h-full object-contain md:object-contain bg-gray-900"
                         draggable="false"
                         loading={currentIndex === 0 ? "eager" : "lazy"}
                         fetchpriority={currentIndex === 0 ? "high" : "auto"}
@@ -205,66 +221,65 @@ const Carousel = ({ images }) => {
                 </AnimatePresence>
               </div>
 
-              {/* Controles - Ocultos en móvil */}
               <motion.button
                 onClick={prevSlide}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 bg-white/80 hover:bg-accentGreen hover:text-white rounded-full transition-colors duration-200 hidden md:block"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
+                className="absolute left-3 top-1/2 -translate-y-1/2 z-20 p-3 bg-white/90 hover:bg-primary hover:text-white rounded-xl shadow-lg border border-gray-100 hover:border-primary transition-all duration-200 hidden md:block group/btn"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <ArrowLeft className="h-6 w-6" />
+                <ArrowLeft className="h-5 w-5 text-gray-700 group-hover/btn:text-white transition-colors" />
               </motion.button>
               <motion.button
                 onClick={nextSlide}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 bg-white/80 hover:bg-accentGreen hover:text-white rounded-full transition-colors duration-200 hidden md:block"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
+                className="absolute right-3 top-1/2 -translate-y-1/2 z-20 p-3 bg-white/90 hover:bg-primary hover:text-white rounded-xl shadow-lg border border-gray-100 hover:border-primary transition-all duration-200 hidden md:block group/btn"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <ArrowRight className="h-6 w-6" />
+                <ArrowRight className="h-5 w-5 text-gray-700 group-hover/btn:text-white transition-colors" />
               </motion.button>
 
-              {/* Indicador de swipe y tap - Solo visible en móvil */}
               <div className="absolute bottom-20 left-0 right-0 flex justify-center md:hidden">
                 <motion.p
-                  className="text-white text-sm bg-black/50 px-4 py-2 rounded-full text-center"
+                  className="text-white text-sm bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full text-center"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1 }}
                 >
-                  Desliza para navegar • Toca para ampliar
+                  Desliza para navegar
                 </motion.p>
               </div>
             </div>
 
-            {/* Miniaturas - Optimizado para móvil */}
-            <div className="grid grid-cols-3 md:grid-cols-5 gap-2 mt-4 overflow-x-auto pb-2 px-2 hide-scrollbar">
-              {images.map((image, index) => (
-                <motion.button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`${currentIndex === index
-                    ? 'ring-2 ring-primary ring-offset-2'
-                    : 'opacity-70 hover:opacity-100'
-                    } rounded-md overflow-hidden transition-all duration-200 relative group`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <img
-                    src={image.src}
-                    alt={image.label}
-                    className="w-full h-20 md:h-16 object-cover"
-                    loading="lazy"
-                  />
-                  {/* Overlay con icono de zoom en hover */}
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
-                    <ZoomIn className="h-4 w-4 text-white" />
-                  </div>
-                </motion.button>
-              ))}
+            <div className="mt-6 flex justify-center">
+              <div className="flex gap-2 md:gap-3 overflow-x-auto pb-2 px-2 max-w-full">
+                {images.map((image, index) => (
+                  <motion.button
+                    key={index}
+                    onClick={() => goToSlide(index)}
+                    className={`flex-shrink-0 relative rounded-lg overflow-hidden transition-all duration-300 group/thumb ${
+                      currentIndex === index
+                        ? 'ring-2 ring-primary ring-offset-2 shadow-lg scale-105'
+                        : 'opacity-60 hover:opacity-100 hover:scale-105'
+                    }`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <img
+                      src={image.src}
+                      alt={image.label}
+                      className="w-16 h-12 md:w-20 md:h-14 object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover/thumb:bg-black/30 transition-colors duration-200 flex items-center justify-center">
+                      <ZoomIn className="h-3 w-3 text-white opacity-0 group-hover/thumb:opacity-100 transition-opacity" />
+                    </div>
+                  </motion.button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Modal de pantalla completa */}
       <AnimatePresence>
