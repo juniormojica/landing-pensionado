@@ -3,12 +3,22 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, X, ZoomIn } from "lucide-react";
 import PropTypes from 'prop-types';
 import Availability from '../Availability/Availability';
+import { ImageSkeleton } from '../Skeleton/Skeleton';
 
 const Carousel = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [[page, direction], setPage] = useState([0, 0]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalIndex, setModalIndex] = useState(0);
+  const [isImageLoading, setIsImageLoading] = useState(true);
+
+  useEffect(() => {
+    setIsImageLoading(true);
+    const img = new Image();
+    img.src = images[currentIndex].src;
+    img.onload = () => setIsImageLoading(false);
+    img.onerror = () => setIsImageLoading(false);
+  }, [currentIndex, images]);
 
   const slideVariants = {
     enter: (direction) => ({
@@ -179,15 +189,18 @@ const Carousel = ({ images }) => {
                       </div>
                     </div>
 
-                    {/* Imagen principal - Eager para primer imagen, lazy para el resto */}
-                    <img
-                      src={images[currentIndex].src}
-                      alt={images[currentIndex].label || `Habitación ${currentIndex + 1}`}
-                      className="w-full h-full object-contain md:object-contain bg-gray-900/90"
-                      draggable="false"
-                      loading={currentIndex === 0 ? "eager" : "lazy"}
-                      fetchpriority={currentIndex === 0 ? "high" : "auto"}
-                    />
+                    {isImageLoading ? (
+                      <ImageSkeleton className="w-full h-full bg-gray-900/90" aspectRatio="aspect-[16/10]" />
+                    ) : (
+                      <img
+                        src={images[currentIndex].src}
+                        alt={images[currentIndex].label || `Habitación ${currentIndex + 1}`}
+                        className="w-full h-full object-contain md:object-contain bg-gray-900/90"
+                        draggable="false"
+                        loading={currentIndex === 0 ? "eager" : "lazy"}
+                        fetchpriority={currentIndex === 0 ? "high" : "auto"}
+                      />
+                    )}
                   </motion.div>
                 </AnimatePresence>
               </div>
