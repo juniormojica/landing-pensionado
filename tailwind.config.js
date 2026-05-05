@@ -44,8 +44,8 @@ export default {
         darkGray: "#757575",
       },
       fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
-        lato: ["Lato", "sans-serif"],
+        poppins: ["Outfit", "sans-serif"],
+        lato: ["DM Sans", "sans-serif"],
       },
     },
   },
