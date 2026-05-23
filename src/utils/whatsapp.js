@@ -13,8 +13,11 @@ export function openWhatsApp(messageTypeOrCustom) {
   } else {
     message = messageTypeOrCustom || DEFAULT_MESSAGES.contact;
   }
-  const whatsappURL = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
-  window.open(whatsappURL, '_blank');
+
+  const event = new CustomEvent('whatsapp:request', {
+    detail: { message },
+  });
+  window.dispatchEvent(event);
 }
 
 export function getWhatsAppUrl(messageTypeOrCustom) {

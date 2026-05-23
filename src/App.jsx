@@ -10,6 +10,7 @@ import PriceSimulator from './components/PriceSimulator/PriceSimulator'
 import Map from './components/Map/Map'
 import AboutUs from './components/AboutUs/AboutUs'
 import FullCapacityModal from './components/FullCapacityModal/FullCapacityModal'
+import RegulationsModal from './components/RegulationsModal/RegulationsModal'
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
 
 
@@ -149,6 +150,7 @@ export default function App() {
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
         />
+        <RegulationsModal />
 
         <Header />
         <ErrorBoundary>
