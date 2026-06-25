@@ -199,6 +199,7 @@ export default function App() {
           <ErrorBoundary>
             <CardPricing
               handleCTAClick={handleCTAClick}
+              images={imagenes}
             />
           </ErrorBoundary>
           <ErrorBoundary>

@@ -1,7 +1,7 @@
 import { Check, Star } from 'lucide-react';
 import PropTypes from 'prop-types';
 
-const CardP = ({ plan, formatPrice, handleWhatsAppClick }) => {
+const CardP = ({ plan, formatPrice, handleWhatsAppClick, isAvailable, disabledReason }) => {
   const isPopular = plan.packageName === "Habitacion Individual";
 
   return (
@@ -70,14 +70,23 @@ const CardP = ({ plan, formatPrice, handleWhatsAppClick }) => {
         </div>
 
         {/* CTA Button */}
+        {!isAvailable && (
+          <div className="rounded-2xl border border-red-100 bg-red-50 px-4 py-3 text-center">
+            <p className="text-sm font-semibold text-red-700">{disabledReason}</p>
+            <p className="mt-1 text-xs text-red-600">Revisa la galería para ver las habitaciones disponibles.</p>
+          </div>
+        )}
         <button
           onClick={handleWhatsAppClick}
+          disabled={!isAvailable}
           className={`w-full py-4 px-6 rounded-xl font-bold transition-all duration-300 
-            ${isPopular
+            ${!isAvailable
+              ? 'bg-gray-200 text-gray-500 cursor-not-allowed shadow-none'
+              : isPopular
               ? 'bg-accentGreen text-white hover:bg-secondaryYellow hover:text-black'
               : 'bg-secondaryYellow text-black hover:bg-accentGreen hover:text-white'
             }`}>
-          Reservar Ahora
+          {isAvailable ? 'Reservar Ahora' : 'Sin cupos disponibles'}
         </button>
       </div>
     </div>
@@ -87,6 +96,7 @@ const CardP = ({ plan, formatPrice, handleWhatsAppClick }) => {
 CardP.propTypes = {
   plan: PropTypes.shape({
     packageName: PropTypes.string.isRequired,
+    roomType: PropTypes.oneOf(['individual', 'compartida']).isRequired,
     price: PropTypes.number.isRequired,
     features: PropTypes.arrayOf(PropTypes.string).isRequired,
     additionals: PropTypes.shape({
@@ -95,7 +105,9 @@ CardP.propTypes = {
     }).isRequired
   }).isRequired,
   formatPrice: PropTypes.func.isRequired,
-  handleWhatsAppClick: PropTypes.func.isRequired
+  handleWhatsAppClick: PropTypes.func.isRequired,
+  isAvailable: PropTypes.bool.isRequired,
+  disabledReason: PropTypes.string.isRequired,
 };
 
 export default CardP;

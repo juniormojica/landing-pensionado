@@ -6,6 +6,7 @@ import { openWhatsApp } from '../../utils/whatsapp';
 const planPricings = [
   {
     packageName: "Habitacion Compartida",
+    roomType: "compartida",
     price: 380000,
     features: [
       'Cuarto Compartido Con otro Estudiante',
@@ -27,6 +28,7 @@ const planPricings = [
   },
   {
     packageName: "Habitacion Individual",
+    roomType: "individual",
     price: 530000,
     features: [
       'Cuarto Privado',
@@ -50,7 +52,7 @@ const planPricings = [
   }
 ];
 
-const CardPricing = ({ handleCTAClick }) => {
+const CardPricing = ({ handleCTAClick, images }) => {
   const formatPrice = (price) => {
     return price.toLocaleString('es-CO', {
       style: 'decimal',
@@ -59,7 +61,19 @@ const CardPricing = ({ handleCTAClick }) => {
     });
   };
 
-  const handleWhatsAppClick = (packageName) => {
+  const hasAvailableRooms = (roomType) => {
+    return images.some((image) => image.tipo === roomType && image.cuposDisponibles > 0);
+  };
+
+  const getDisabledReason = (roomType) => {
+    return roomType === 'individual'
+      ? 'No hay cupos disponibles para habitaciones individuales.'
+      : 'No hay cupos disponibles para habitaciones compartidas.';
+  };
+
+  const handleWhatsAppClick = (packageName, isAvailable = true) => {
+    if (!isAvailable) return;
+
     handleCTAClick(() => openWhatsApp(`Hola, me interesa obtener información sobre el paquete: ${packageName}`));
   };
 
@@ -130,7 +144,10 @@ const CardPricing = ({ handleCTAClick }) => {
           className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-10 xl:gap-12 max-w-6xl mx-auto justify-items-center"
           variants={containerVariants}
         >
-          {planPricings.map((planPricing, index) => (
+          {planPricings.map((planPricing, index) => {
+            const isAvailable = hasAvailableRooms(planPricing.roomType);
+
+            return (
             <motion.div
               key={index}
               className="w-full max-w-md"
@@ -144,10 +161,13 @@ const CardPricing = ({ handleCTAClick }) => {
               <CardP
                 plan={planPricing}
                 formatPrice={formatPrice}
-                handleWhatsAppClick={() => handleWhatsAppClick(planPricing.packageName)}
+                isAvailable={isAvailable}
+                disabledReason={getDisabledReason(planPricing.roomType)}
+                handleWhatsAppClick={() => handleWhatsAppClick(planPricing.packageName, isAvailable)}
               />
             </motion.div>
-          ))}
+          );
+          })}
         </motion.div>
 
         <motion.div
@@ -182,7 +202,13 @@ const CardPricing = ({ handleCTAClick }) => {
 };
 
 CardPricing.propTypes = {
-  handleCTAClick: PropTypes.func
+  handleCTAClick: PropTypes.func,
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      tipo: PropTypes.oneOf(['individual', 'compartida']),
+      cuposDisponibles: PropTypes.number,
+    })
+  ).isRequired,
 };
 
 export default CardPricing;
