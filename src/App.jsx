@@ -205,6 +205,7 @@ export default function App() {
           <ErrorBoundary>
             <PriceSimulator
               handleCTAClick={handleCTAClick}
+              images={imagenes}
             />
           </ErrorBoundary>
           <ErrorBoundary>

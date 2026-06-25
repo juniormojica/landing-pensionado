@@ -11,11 +11,10 @@ import {
     CheckCircle2,
     ArrowRight,
     ArrowLeft,
-    Sparkles,
     Calculator
 } from 'lucide-react';
 
-const PriceSimulator = ({ handleCTAClick }) => {
+const PriceSimulator = ({ handleCTAClick, images }) => {
     const [currentStep, setCurrentStep] = useState(0);
     const [selections, setSelections] = useState({
         roomType: null,
@@ -70,20 +69,20 @@ const PriceSimulator = ({ handleCTAClick }) => {
         },
         {
             id: 'food',
-            title: 'Plan de Alimentación',
-            description: '¿Quieres incluir alimentación?',
+            title: 'Plan de Almuerzo',
+            description: '¿Quieres incluir almuerzo?',
             icon: UtensilsCrossed,
             options: [
                 {
                     id: 'no',
-                    name: 'Sin alimentación',
+                    name: 'Sin almuerzo',
                     description: 'Acceso a cocina compartida',
                     price: 0
                 },
                 {
                     id: 'yes',
-                    name: 'Plan de alimentación completo',
-                    description: 'Almuerzo Domingo a Domingo',
+                    name: 'Plan de almuerzo',
+                    description: 'Almuerzo de lunes a sábado',
                     price: 300000,
                     popular: true
                 }
@@ -97,6 +96,16 @@ const PriceSimulator = ({ handleCTAClick }) => {
             minimumFractionDigits: 0,
             maximumFractionDigits: 0,
         });
+    };
+
+    const hasAvailableRooms = (roomType) => {
+        return images.some((image) => image.tipo === roomType && image.cuposDisponibles > 0);
+    };
+
+    const getRoomTypeFromOption = (optionId) => {
+        if (optionId === 'shared') return 'compartida';
+        if (optionId === 'individual') return 'individual';
+        return null;
     };
 
     const calculateTotal = () => {
@@ -146,7 +155,7 @@ const PriceSimulator = ({ handleCTAClick }) => {
         if (selections.food === 'yes') {
             const foodOption = steps[2].options.find(opt => opt.id === 'yes');
             breakdown.push({
-                name: 'Plan de Alimentación',
+                name: 'Plan de Almuerzo',
                 price: foodOption.price
             });
         }
@@ -155,6 +164,10 @@ const PriceSimulator = ({ handleCTAClick }) => {
     };
 
     const handleSelection = (stepId, optionId) => {
+        const roomType = stepId === 'roomType' ? getRoomTypeFromOption(optionId) : null;
+
+        if (roomType && !hasAvailableRooms(roomType)) return;
+
         setSelections(prev => ({
             ...prev,
             [stepId]: optionId
@@ -277,6 +290,8 @@ const PriceSimulator = ({ handleCTAClick }) => {
                                     <div className="space-y-3 sm:space-y-3 md:space-y-4 mb-4 sm:mb-6 md:mb-8">
                                         {currentStepData.options.map((option) => {
                                             const isSelected = selections[currentStepData.id] === option.id;
+                                            const roomType = currentStepData.id === 'roomType' ? getRoomTypeFromOption(option.id) : null;
+                                            const isDisabled = roomType ? !hasAvailableRooms(roomType) : false;
                                             const displayPrice = option.getPriceByRoom
                                                 ? option.getPriceByRoom(selections.roomType || 'shared')
                                                 : option.price;
@@ -285,14 +300,24 @@ const PriceSimulator = ({ handleCTAClick }) => {
                                                 <motion.button
                                                     key={option.id}
                                                     onClick={() => handleSelection(currentStepData.id, option.id)}
-                                                    className={`w-full p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-xl md:rounded-2xl border-2 transition-all duration-300 text-left relative overflow-hidden active:scale-95 ${isSelected
+                                                    disabled={isDisabled}
+                                                    className={`w-full p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-xl md:rounded-2xl border-2 transition-all duration-300 text-left relative overflow-hidden active:scale-95 ${isDisabled
+                                                        ? 'border-gray-200 bg-gray-100 opacity-70 cursor-not-allowed'
+                                                        : isSelected
                                                         ? 'border-accentGreen bg-accentGreen/5 shadow-lg'
                                                         : 'border-gray-200 hover:border-accentGreen/50 hover:shadow-md'
                                                         }`}
-                                                    whileHover={{ scale: 1.02 }}
-                                                    whileTap={{ scale: 0.98 }}
+                                                    whileHover={isDisabled ? undefined : { scale: 1.02 }}
+                                                    whileTap={isDisabled ? undefined : { scale: 0.98 }}
                                                 >
-                                                    {option.popular && (
+                                                    {isDisabled && (
+                                                        <div className="absolute top-2 right-2 md:top-3 md:right-4">
+                                                            <span className="bg-red-100 text-red-700 px-2 sm:px-2 md:px-3 py-0.5 sm:py-0.5 md:py-1 rounded-full text-xs font-bold">
+                                                                Sin cupos
+                                                            </span>
+                                                        </div>
+                                                    )}
+                                                    {option.popular && !isDisabled && (
                                                         <div className="absolute top-2 right-2 md:top-0.5 md:right-4">
                                                             <span className="bg-secondaryYellow text-black px-2 sm:px-2 md:px-3 py-0.5 sm:py-0.5 md:py-1 rounded-full text-xs font-bold flex items-center gap-1">
                                                                 Popular
@@ -311,7 +336,7 @@ const PriceSimulator = ({ handleCTAClick }) => {
                                                                 </h4>
                                                             </div>
                                                             <p className="text-gray-600 text-xs sm:text-sm md:text-sm mb-2 sm:mb-2 md:mb-3">
-                                                                {option.description}
+                                                                {isDisabled ? 'No hay cupos disponibles para este tipo de habitación.' : option.description}
                                                             </p>
                                                             {option.features && (
                                                                 <div className="flex flex-wrap gap-1.5 md:gap-2">
@@ -327,8 +352,8 @@ const PriceSimulator = ({ handleCTAClick }) => {
                                                             )}
                                                         </div>
                                                         <div className="text-left sm:text-right md:text-right flex sm:flex-col md:flex-col items-center sm:items-end md:items-end justify-between sm:justify-start md:justify-start">
-                                                            <div className="text-xl sm:text-2xl md:text-2xl font-bold text-gray-900">
-                                                                {displayPrice > 0 ? `+$${formatPrice(displayPrice)}` : 'Incluido'}
+                                                            <div className={`text-xl sm:text-2xl md:text-2xl font-bold ${isDisabled ? 'text-gray-400' : 'text-gray-900'}`}>
+                                                                {isDisabled ? 'No disponible' : displayPrice > 0 ? `+$${formatPrice(displayPrice)}` : 'Incluido'}
                                                             </div>
                                                             <div className="text-xs md:text-sm text-gray-500">por mes</div>
                                                         </div>
@@ -505,7 +530,13 @@ const PriceSimulator = ({ handleCTAClick }) => {
 };
 
 PriceSimulator.propTypes = {
-    handleCTAClick: PropTypes.func
+    handleCTAClick: PropTypes.func,
+    images: PropTypes.arrayOf(
+        PropTypes.shape({
+            tipo: PropTypes.oneOf(['individual', 'compartida']),
+            cuposDisponibles: PropTypes.number,
+        })
+    ).isRequired,
 };
 
 export default PriceSimulator;

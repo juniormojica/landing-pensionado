@@ -50,7 +50,7 @@ const CardP = ({ plan, formatPrice, handleWhatsAppClick, isAvailable, disabledRe
               <div className="flex-1">
                 <p className="text-gray-700">
                   Almuerzo
-                  <span className="block text-sm text-gray-500">(Lunes a Domingo)</span>
+                  <span className="block text-sm text-gray-500">(Lunes a Sábado)</span>
                 </p>
               </div>
               <span className="font-bold text-gray-900">
