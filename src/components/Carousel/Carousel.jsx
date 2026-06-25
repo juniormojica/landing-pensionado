@@ -192,6 +192,10 @@ const Carousel = ({ images }) => {
                           <Availability
                             status={images[currentIndex].disponibilidad}
                             label={images[currentIndex].label}
+                            tipo={images[currentIndex].tipo}
+                            cuposDisponibles={images[currentIndex].cuposDisponibles}
+                            genero={images[currentIndex].genero}
+                            aireAcondicionado={images[currentIndex].aireAcondicionado}
                           />
                           <div className="flex items-center gap-3">
                             <span className="bg-accent text-gray-900 px-4 py-1.5 rounded-full text-sm font-semibold shadow-lg">
@@ -353,6 +357,10 @@ const Carousel = ({ images }) => {
                     <Availability
                       status={images[modalIndex].disponibilidad}
                       label={images[modalIndex].label}
+                      tipo={images[modalIndex].tipo}
+                      cuposDisponibles={images[modalIndex].cuposDisponibles}
+                      genero={images[modalIndex].genero}
+                      aireAcondicionado={images[modalIndex].aireAcondicionado}
                     />
                     <span className="text-sm">
                       {modalIndex + 1} / {images.length}
@@ -395,8 +403,12 @@ Carousel.propTypes = {
   images: PropTypes.arrayOf(
     PropTypes.shape({
       src: PropTypes.string.isRequired,
-      disponibilidad: PropTypes.string.isRequired,
+      disponibilidad: PropTypes.string,
       label: PropTypes.string.isRequired,
+      tipo: PropTypes.oneOf(['individual', 'compartida']),
+      cuposDisponibles: PropTypes.number,
+      genero: PropTypes.oneOf(['dama', 'caballero']),
+      aireAcondicionado: PropTypes.bool,
     })
   ).isRequired,
 };

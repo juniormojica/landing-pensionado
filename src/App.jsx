@@ -15,69 +15,99 @@ import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
 
 
 
-import banio3jr from './assets/banio3jr.jpg';
-import banioh4 from './assets/banioh4.jpg';
-import bh1 from './assets/bh1.jpg';
-import bh3 from './assets/bh3.jpg';
-import comedor from './assets/comedor.jpg';
-import comedor1 from './assets/comedor1.jpg';
-import cuarto2 from './assets/cuarto2.0.jpg';
-import cuarto21 from './assets/cuarto2.1.jpg';
-import cuarto22 from './assets/cuarto2.2.jpg';
-import cuarto23 from './assets/cuarto2.3.jpg';
-import cuarto24 from './assets/cuarto2.4.jpg';
-import cuartojr from './assets/cuartojr.jpg';
-import cuartojr2 from './assets/cuartojr2.jpg';
-import cuartojr3 from './assets/cuartojr3.jpg';
-import cuartojr4 from './assets/cuartojr4.jpg';
-import entrada from './assets/entrada.jpg';
-import entrada1 from './assets/entrada1.jpg';
-import h1 from './assets/h1.jpg';
-import h3 from './assets/h3.jpg';
-import h11 from './assets/h11.jpg';
-import h31 from './assets/h31.jpg';
-import h33 from './assets/h33.jpg';
-import h41 from './assets/h41.jpg';
-import h42 from './assets/h42.jpg';
-import p2 from './assets/p2.jpg';
-import salacomedor from './assets/salacomedor.jpg';
+// Zonas comunes
+import entrada from './assets/zonas-comunes/entrada-C0iLJZAX.jpg';
+import entrada1 from './assets/zonas-comunes/entrada1-CoiJC5Zf.jpg';
+import comedor from './assets/zonas-comunes/comedor-Ck06iimg.jpg';
+import comedor1 from './assets/zonas-comunes/comedor1-ClDkmGwk.jpg';
+import pasillo from './assets/zonas-comunes/p2-CDQIcf_R.jpg';
+import salaComedor from './assets/zonas-comunes/salacomedor-Vz53_xmY.jpg';
+
+// Piso 1 - Habitación 1
+import p1h1_1 from './assets/p1/h1/p1_h1_1.jpg';
+import p1h1_1_1 from './assets/p1/h1/p1_h1_1.1.jpg';
+import p1h1_1_2 from './assets/p1/h1/p1_h1_1.2.jpg';
+import p1h1_1_3 from './assets/p1/h1/p1_h1_1.3.jpg';
+import p1h1_1_4 from './assets/p1/h1/p1_h1_1.4.jpg';
+
+// Piso 1 - Habitación 2
+import p1h2_1 from './assets/p1/h2/p1_h2_1.jpg';
+import p1h2_1_1 from './assets/p1/h2/p1_h2_1.1.jpg';
+import p1h2_1_2 from './assets/p1/h2/p1_h2_1.2.jpg';
+import p1h2_1_3 from './assets/p1/h2/p1_h2_1.3.jpg';
+import p1h2_1_4 from './assets/p1/h2/p1_h2_1.4.jpg';
+
+// Piso 1 - Habitación 3
+import p1h3_1 from './assets/p1/h3/p1_h3_1.jpg';
+import p1h3_1_1 from './assets/p1/h3/p1_h3_1.1.jpg';
+import p1h3_1_2 from './assets/p1/h3/p1_h3_1.2.jpg';
+
+// Piso 1 - Habitación 4
+import p1h4_1 from './assets/p1/h4/p1_h4_1.jpg';
+import p1h4_1_1 from './assets/p1/h4/p1_h4.1.1.jpg';
+import p1h4_1_2 from './assets/p1/h4/p1_h4_1.2.jpg';
+import p1h4_1_3 from './assets/p1/h4/p1_h4_1.3.jpg';
+import p1h4_1_4 from './assets/p1/h4/p1_h4_1.4.jpg';
+
+// Piso 2 - Habitación 1
+import p2h1_1 from './assets/p2/h1/p2_h1_1.jpeg';
+import p2h1_1_1 from './assets/p2/h1/p2_h1_1.1.jpeg';
+import p2h1_1_2 from './assets/p2/h1/p2_h1_1.2.jpeg';
+import p2h1_1_3 from './assets/p2/h1/p2_h1_1.3.jpeg';
+
+// Piso 2 - Habitación 2
+import p2h2_1 from './assets/p2/h2/p2_h2_1.jpg';
+import p2h2_1_1 from './assets/p2/h2/p2_h2_1.1.jpg';
+import p2h2_1_2 from './assets/p2/h2/p2_h2_1.2.jpg';
+import p2h2_1_3 from './assets/p2/h2/p2_h2_1.3.jpg';
 import PromoVideo from './components/PromoVideo/PromoVideo'
 
 const imagenes = [
-  { src: entrada, disponibilidad: 'Disponible', label: 'Entrada Principal' },
-  { src: entrada1, disponibilidad: 'Disponible', label: 'Entrada Lateral' },
+  // Zonas comunes
+  { src: entrada, disponibilidad: 'Zona Común', label: 'Entrada Principal' },
+  { src: entrada1, disponibilidad: 'Zona Común', label: 'Entrada Lateral' },
+  { src: comedor, disponibilidad: 'Zona Común', label: 'Comedor Principal' },
+  { src: comedor1, disponibilidad: 'Zona Común', label: 'Comedor Auxiliar' },
+  { src: pasillo, disponibilidad: 'Zona Común', label: 'Pasillo' },
+  { src: salaComedor, disponibilidad: 'Zona Común', label: 'Sala-Comedor' },
 
-  { src: comedor, disponibilidad: 'Disponible', label: 'Comedor Principal' },
-  { src: comedor1, disponibilidad: 'Disponible', label: 'Comedor Auxiliar' },
+  // Piso 1 - Habitación 1
+  { src: p1h1_1, label: 'Piso 1 - Habitación 1', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
+  { src: p1h1_1_1, label: 'Piso 1 - Habitación 1 - Vista 2', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
+  { src: p1h1_1_2, label: 'Piso 1 - Habitación 1 - Vista 3', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
+  { src: p1h1_1_3, label: 'Piso 1 - Habitación 1 - Vista 4', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
+  { src: p1h1_1_4, label: 'Piso 1 - Habitación 1 - Vista 5', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
 
-  { src: p2, disponibilidad: 'Disponible', label: 'Pasillo' },
-  { src: salacomedor, disponibilidad: 'Disponible', label: 'Sala-Comedor' },
+  // Piso 1 - Habitación 2
+  { src: p1h2_1, label: 'Piso 1 - Habitación 2', tipo: 'compartida', cuposDisponibles: 1, genero: 'dama', aireAcondicionado: true },
+  { src: p1h2_1_1, label: 'Piso 1 - Habitación 2 - Vista 2', tipo: 'compartida', cuposDisponibles: 1, genero: 'dama', aireAcondicionado: true },
+  { src: p1h2_1_2, label: 'Piso 1 - Habitación 2 - Vista 3', tipo: 'compartida', cuposDisponibles: 1, genero: 'dama', aireAcondicionado: true },
+  { src: p1h2_1_3, label: 'Piso 1 - Habitación 2 - Vista 4', tipo: 'compartida', cuposDisponibles: 1, genero: 'dama', aireAcondicionado: true },
+  { src: p1h2_1_4, label: 'Piso 1 - Habitación 2 - Vista 5', tipo: 'compartida', cuposDisponibles: 1, genero: 'dama', aireAcondicionado: true },
 
-  { src: h1, disponibilidad: 'No Disponible', label: 'Habitación 1' },
-  { src: bh1, disponibilidad: 'No Disponible', label: 'Baño Habitación 1' },
+  // Piso 1 - Habitación 3
+  { src: p1h3_1, label: 'Piso 1 - Habitación 3', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
+  { src: p1h3_1_1, label: 'Piso 1 - Habitación 3 - Vista 2', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
+  { src: p1h3_1_2, label: 'Piso 1 - Habitación 3 - Vista 3', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
 
-  { src: cuarto2, disponibilidad: 'Disponible', label: 'Habitación 2 - Vista 1' },
-  { src: cuarto21, disponibilidad: 'Disponible', label: 'Habitación 2 - Vista 2' },
-  { src: cuarto22, disponibilidad: 'Disponible', label: 'Habitación 2 - Vista 3' },
-  { src: cuarto23, disponibilidad: 'Disponible', label: 'Habitación 2 - Vista 4' },
-  { src: cuarto24, disponibilidad: 'Disponible', label: 'Habitación 2 - Vista 5' },
+  // Piso 1 - Habitación 4
+  { src: p1h4_1, label: 'Piso 1 - Habitación 4', tipo: 'compartida', cuposDisponibles: 1, genero: 'caballero', aireAcondicionado: false },
+  { src: p1h4_1_1, label: 'Piso 1 - Habitación 4 - Vista 2', tipo: 'compartida', cuposDisponibles: 1, genero: 'caballero', aireAcondicionado: false },
+  { src: p1h4_1_2, label: 'Piso 1 - Habitación 4 - Vista 3', tipo: 'compartida', cuposDisponibles: 1, genero: 'caballero', aireAcondicionado: false },
+  { src: p1h4_1_3, label: 'Piso 1 - Habitación 4 - Vista 4', tipo: 'compartida', cuposDisponibles: 1, genero: 'caballero', aireAcondicionado: false },
+  { src: p1h4_1_4, label: 'Piso 1 - Habitación 4 - Vista 5', tipo: 'compartida', cuposDisponibles: 1, genero: 'caballero', aireAcondicionado: false },
 
-  { src: h3, disponibilidad: 'No Disponible', label: 'Habitación 3' },
-  { src: h11, disponibilidad: 'No Disponible', label: 'Habitación 1 - Vista 2' },
-  { src: h31, disponibilidad: 'No Disponible', label: 'Habitación 3 - Vista 2' },
-  { src: h33, disponibilidad: 'No Disponible', label: 'Habitación 3 - Vista 3' },
+  // Piso 2 - Habitación 1
+  { src: p2h1_1, label: 'Piso 2 - Habitación 1', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
+  { src: p2h1_1_1, label: 'Piso 2 - Habitación 1 - Vista 2', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
+  { src: p2h1_1_2, label: 'Piso 2 - Habitación 1 - Vista 3', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
+  { src: p2h1_1_3, label: 'Piso 2 - Habitación 1 - Vista 4', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
 
-  { src: h41, disponibilidad: 'No Disponible', label: 'Habitación 4 - Vista 1' },
-  { src: h42, disponibilidad: 'No Disponible', label: 'Habitación 4 - Vista 2' },
-  { src: banioh4, disponibilidad: 'No Disponible', label: 'Baño Habitación 4' },
-
-  { src: bh3, disponibilidad: 'No Disponible', label: 'Baño Habitación 3' },
-
-  { src: cuartojr, disponibilidad: 'No Disponible', label: 'Suite Junior - Vista 1' },
-  { src: cuartojr2, disponibilidad: 'No Disponible', label: 'Suite Junior - Vista 2' },
-  { src: cuartojr3, disponibilidad: 'No Disponible', label: 'Suite Junior - Vista 3' },
-  { src: cuartojr4, disponibilidad: 'No Disponible', label: 'Suite Junior - Vista 4' },
-  { src: banio3jr, disponibilidad: 'No Disponible', label: 'Baño Suite Junior' },
+  // Piso 2 - Habitación 2
+  { src: p2h2_1, label: 'Piso 2 - Habitación 2', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
+  { src: p2h2_1_1, label: 'Piso 2 - Habitación 2 - Vista 2', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
+  { src: p2h2_1_2, label: 'Piso 2 - Habitación 2 - Vista 3', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
+  { src: p2h2_1_3, label: 'Piso 2 - Habitación 2 - Vista 4', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
 ];
 
 // Configuración global de cupos
