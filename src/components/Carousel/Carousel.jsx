@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, X, ZoomIn } from "lucide-react";
 import PropTypes from 'prop-types';
@@ -105,10 +105,38 @@ const Carousel = ({ images }) => {
     }
   };
 
+  const getAdjacentGroupIndex = useCallback((newDirection) => (
+    (activeGroupIndex + newDirection + imageGroups.length) % imageGroups.length
+  ), [activeGroupIndex, imageGroups.length]);
+
   const paginate = (newDirection) => {
-    const newIndex = (currentIndex + newDirection + activeImages.length) % activeImages.length;
+    const isAtLastImage = currentIndex === activeImages.length - 1;
+    const isAtFirstImage = currentIndex === 0;
+
     setPage([page + newDirection, newDirection]);
+
+    if (hasGroups && newDirection > 0 && isAtLastImage) {
+      const nextGroupIndex = getAdjacentGroupIndex(1);
+      setActiveGroupIndex(nextGroupIndex);
+      setCurrentIndex(0);
+      setModalIndex(0);
+      return;
+    }
+
+    if (hasGroups && newDirection < 0 && isAtFirstImage) {
+      const previousGroupIndex = getAdjacentGroupIndex(-1);
+      const previousGroup = imageGroups[previousGroupIndex];
+      const lastImageIndex = previousGroup.images.length - 1;
+
+      setActiveGroupIndex(previousGroupIndex);
+      setCurrentIndex(lastImageIndex);
+      setModalIndex(lastImageIndex);
+      return;
+    }
+
+    const newIndex = currentIndex + newDirection;
     setCurrentIndex(newIndex);
+    setModalIndex(newIndex);
   };
 
   const nextSlide = () => paginate(1);
@@ -145,13 +173,40 @@ const Carousel = ({ images }) => {
     document.body.style.overflow = 'auto';
   };
 
-  const nextModalSlide = () => {
-    setModalIndex((prev) => (prev + 1) % activeImages.length);
-  };
+  const nextModalSlide = useCallback(() => {
+    const isAtLastImage = modalIndex === activeImages.length - 1;
 
-  const prevModalSlide = () => {
-    setModalIndex((prev) => (prev - 1 + activeImages.length) % activeImages.length);
-  };
+    if (hasGroups && isAtLastImage) {
+      const nextGroupIndex = getAdjacentGroupIndex(1);
+      setActiveGroupIndex(nextGroupIndex);
+      setCurrentIndex(0);
+      setModalIndex(0);
+      return;
+    }
+
+    const nextIndex = (modalIndex + 1) % activeImages.length;
+    setModalIndex(nextIndex);
+    setCurrentIndex(nextIndex);
+  }, [activeImages.length, getAdjacentGroupIndex, hasGroups, modalIndex]);
+
+  const prevModalSlide = useCallback(() => {
+    const isAtFirstImage = modalIndex === 0;
+
+    if (hasGroups && isAtFirstImage) {
+      const previousGroupIndex = getAdjacentGroupIndex(-1);
+      const previousGroup = imageGroups[previousGroupIndex];
+      const lastImageIndex = previousGroup.images.length - 1;
+
+      setActiveGroupIndex(previousGroupIndex);
+      setCurrentIndex(lastImageIndex);
+      setModalIndex(lastImageIndex);
+      return;
+    }
+
+    const previousIndex = (modalIndex - 1 + activeImages.length) % activeImages.length;
+    setModalIndex(previousIndex);
+    setCurrentIndex(previousIndex);
+  }, [activeImages.length, getAdjacentGroupIndex, hasGroups, imageGroups, modalIndex]);
 
   // Agregar/remover event listener para teclas
   useEffect(() => {
@@ -164,17 +219,17 @@ const Carousel = ({ images }) => {
           document.body.style.overflow = 'auto';
           break;
         case 'ArrowLeft':
-          setModalIndex((prev) => (prev - 1 + activeImages.length) % activeImages.length);
+          prevModalSlide();
           break;
         case 'ArrowRight':
-          setModalIndex((prev) => (prev + 1) % activeImages.length);
+          nextModalSlide();
           break;
       }
     };
 
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [isModalOpen, activeImages.length]);
+  }, [isModalOpen, nextModalSlide, prevModalSlide]);
 
   if (activeImages.length === 0) {
     return null;
