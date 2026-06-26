@@ -20,6 +20,7 @@ const PromoVideo = () => {
     if (!window.YT) {
       const tag = document.createElement('script');
       tag.src = 'https://www.youtube.com/iframe_api';
+      tag.async = true;
       const firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
@@ -38,7 +39,7 @@ const PromoVideo = () => {
   }, []);
 
   const initializePlayer = () => {
-    const newPlayer = new window.YT.Player('youtube-player', {
+    new window.YT.Player('youtube-player', {
       height: '100%',
       width: '100%',
       videoId: videoId,
@@ -167,7 +168,7 @@ const PromoVideo = () => {
       {/* Video Container */}
       <div 
         ref={videoContainerRef}
-        className="relative aspect-video bg-gray-900 group cursor-pointer"
+        className="relative aspect-[9/16] sm:aspect-video bg-gray-900 group cursor-pointer"
         onMouseMove={handleMouseMove}
         onMouseLeave={() => isPlaying && setShowControls(false)}
       >
@@ -192,6 +193,7 @@ const PromoVideo = () => {
                 <button
                   onClick={handlePlayPause}
                   disabled={!player}
+                  aria-label={isPlaying ? 'Pausar video' : 'Reproducir video'}
                   className="bg-green-500 hover:bg-green-600 disabled:bg-gray-500 disabled:cursor-not-allowed rounded-full p-4 transition-all duration-200 hover:scale-110 shadow-lg"
                 >
                   {isPlaying ? (
@@ -204,6 +206,7 @@ const PromoVideo = () => {
                 <button
                   onClick={handleMuteToggle}
                   disabled={!player}
+                  aria-label={isMuted ? 'Activar audio' : 'Silenciar video'}
                   className="bg-gray-700/80 hover:bg-gray-600 disabled:bg-gray-500 disabled:cursor-not-allowed rounded-full p-3 transition-all duration-200 hover:scale-110 backdrop-blur-sm"
                 >
                   {isMuted ? (
@@ -221,6 +224,7 @@ const PromoVideo = () => {
               <div className="flex items-center space-x-2">
                 <button
                   onClick={handleFullscreen}
+                  aria-label={isFullscreen ? 'Salir de pantalla completa' : 'Ver en pantalla completa'}
                   className="bg-gray-700/80 hover:bg-gray-600 rounded-full p-3 transition-all duration-200 hover:scale-110 backdrop-blur-sm"
                 >
                   {isFullscreen ? (
@@ -239,6 +243,7 @@ const PromoVideo = () => {
           <div className="absolute inset-0 flex items-center justify-center bg-gray-900/40 transition-opacity duration-300">
             <button
               onClick={handlePlayPause}
+              aria-label="Reproducir video"
               className="bg-green-500 hover:bg-green-600 backdrop-blur-sm rounded-full p-8 transition-all duration-300 hover:scale-110 shadow-2xl"
             >
               <Play className="w-16 h-16 text-white ml-2" />
@@ -264,17 +269,6 @@ const PromoVideo = () => {
         )}
       </div>
 
-    
-
-      {/* Mobile Optimization Notice */}
-      <div className="sm:hidden bg-green-50 px-6 py-4 border-t border-green-100">
-        <div className="flex items-center justify-center space-x-2">
-          <div className="w-2 h-2 bg-green-500 rounded-full animate-bounce"></div>
-          <p className="text-green-700 text-sm font-medium">
-            Gira tu dispositivo para una mejor experiencia
-          </p>
-        </div>
-      </div>
     </div>
   );
 };

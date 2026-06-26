@@ -12,103 +12,125 @@ import AboutUs from './components/AboutUs/AboutUs'
 import FullCapacityModal from './components/FullCapacityModal/FullCapacityModal'
 import RegulationsModal from './components/RegulationsModal/RegulationsModal'
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
-
-
-
-// Zonas comunes
-import entrada from './assets/zonas-comunes/entrada-C0iLJZAX.jpg';
-import entrada1 from './assets/zonas-comunes/entrada1-CoiJC5Zf.jpg';
-import comedor from './assets/zonas-comunes/comedor-Ck06iimg.jpg';
-import comedor1 from './assets/zonas-comunes/comedor1-ClDkmGwk.jpg';
-import pasillo from './assets/zonas-comunes/p2-CDQIcf_R.jpg';
-import salaComedor from './assets/zonas-comunes/salacomedor-Vz53_xmY.jpg';
-
-// Piso 1 - Habitación 1
-import p1h1_1 from './assets/p1/h1/p1_h1_1.jpg';
-import p1h1_1_1 from './assets/p1/h1/p1_h1_1.1.jpg';
-import p1h1_1_2 from './assets/p1/h1/p1_h1_1.2.jpg';
-import p1h1_1_3 from './assets/p1/h1/p1_h1_1.3.jpg';
-import p1h1_1_4 from './assets/p1/h1/p1_h1_1.4.jpg';
-
-// Piso 1 - Habitación 2
-import p1h2_1 from './assets/p1/h2/p1_h2_1.jpg';
-import p1h2_1_1 from './assets/p1/h2/p1_h2_1.1.jpg';
-import p1h2_1_2 from './assets/p1/h2/p1_h2_1.2.jpg';
-import p1h2_1_3 from './assets/p1/h2/p1_h2_1.3.jpg';
-import p1h2_1_4 from './assets/p1/h2/p1_h2_1.4.jpg';
-
-// Piso 1 - Habitación 3
-import p1h3_1 from './assets/p1/h3/p1_h3_1.jpg';
-import p1h3_1_1 from './assets/p1/h3/p1_h3_1.1.jpg';
-import p1h3_1_2 from './assets/p1/h3/p1_h3_1.2.jpg';
-
-// Piso 1 - Habitación 4
-import p1h4_1 from './assets/p1/h4/p1_h4_1.jpg';
-import p1h4_1_1 from './assets/p1/h4/p1_h4.1.1.jpg';
-import p1h4_1_2 from './assets/p1/h4/p1_h4_1.2.jpg';
-import p1h4_1_3 from './assets/p1/h4/p1_h4_1.3.jpg';
-import p1h4_1_4 from './assets/p1/h4/p1_h4_1.4.jpg';
-
-// Piso 2 - Habitación 1
-import p2h1_1 from './assets/p2/h1/p2_h1_1.jpeg';
-import p2h1_1_1 from './assets/p2/h1/p2_h1_1.1.jpeg';
-import p2h1_1_2 from './assets/p2/h1/p2_h1_1.2.jpeg';
-import p2h1_1_3 from './assets/p2/h1/p2_h1_1.3.jpeg';
-
-// Piso 2 - Habitación 2
-import p2h2_1 from './assets/p2/h2/p2_h2_1.jpg';
-import p2h2_1_1 from './assets/p2/h2/p2_h2_1.1.jpg';
-import p2h2_1_2 from './assets/p2/h2/p2_h2_1.2.jpg';
-import p2h2_1_3 from './assets/p2/h2/p2_h2_1.3.jpg';
 import PromoVideo from './components/PromoVideo/PromoVideo'
 
-const imagenes = [
-  // Zonas comunes
-  { src: entrada, disponibilidad: 'Zona Común', label: 'Entrada Principal' },
-  { src: entrada1, disponibilidad: 'Zona Común', label: 'Entrada Lateral' },
-  { src: comedor, disponibilidad: 'Zona Común', label: 'Comedor Principal' },
-  { src: comedor1, disponibilidad: 'Zona Común', label: 'Comedor Auxiliar' },
-  { src: pasillo, disponibilidad: 'Zona Común', label: 'Pasillo' },
-  { src: salaComedor, disponibilidad: 'Zona Común', label: 'Sala-Comedor' },
+const galleryAssets = import.meta.glob([
+  './assets/p1/**/*.{jpg,jpeg,webp}',
+  './assets/p2/**/*.{jpg,jpeg,webp}',
+  './assets/zonas-comunes/entrada-C0iLJZAX*.{jpg,jpeg,webp}',
+  './assets/zonas-comunes/entrada1-CoiJC5Zf*.{jpg,jpeg,webp}',
+  './assets/zonas-comunes/comedor-Ck06iimg*.{jpg,jpeg,webp}',
+  './assets/zonas-comunes/comedor1-ClDkmGwk*.{jpg,jpeg,webp}',
+  './assets/zonas-comunes/p2-CDQIcf_R*.{jpg,jpeg,webp}',
+  './assets/zonas-comunes/salacomedor-Vz53_xmY*.{jpg,jpeg,webp}',
+], {
+  eager: true,
+  import: 'default',
+  query: '?url',
+});
 
-  // Piso 1 - Habitación 1
-  { src: p1h1_1, label: 'Piso 1 - Habitación 1', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
-  { src: p1h1_1_1, label: 'Piso 1 - Habitación 1 - Vista 2', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
-  { src: p1h1_1_2, label: 'Piso 1 - Habitación 1 - Vista 3', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
-  { src: p1h1_1_3, label: 'Piso 1 - Habitación 1 - Vista 4', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
-  { src: p1h1_1_4, label: 'Piso 1 - Habitación 1 - Vista 5', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
+const getGalleryAsset = (path) => {
+  const asset = galleryAssets[path];
 
-  // Piso 1 - Habitación 2
-  { src: p1h2_1, label: 'Piso 1 - Habitación 2', tipo: 'compartida', cuposDisponibles: 1, genero: 'dama', aireAcondicionado: true },
-  { src: p1h2_1_1, label: 'Piso 1 - Habitación 2 - Vista 2', tipo: 'compartida', cuposDisponibles: 1, genero: 'dama', aireAcondicionado: true },
-  { src: p1h2_1_2, label: 'Piso 1 - Habitación 2 - Vista 3', tipo: 'compartida', cuposDisponibles: 1, genero: 'dama', aireAcondicionado: true },
-  { src: p1h2_1_3, label: 'Piso 1 - Habitación 2 - Vista 4', tipo: 'compartida', cuposDisponibles: 1, genero: 'dama', aireAcondicionado: true },
-  { src: p1h2_1_4, label: 'Piso 1 - Habitación 2 - Vista 5', tipo: 'compartida', cuposDisponibles: 1, genero: 'dama', aireAcondicionado: true },
+  if (!asset) {
+    throw new Error(`Missing gallery asset: ${path}`);
+  }
 
-  // Piso 1 - Habitación 3
-  { src: p1h3_1, label: 'Piso 1 - Habitación 3', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
-  { src: p1h3_1_1, label: 'Piso 1 - Habitación 3 - Vista 2', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
-  { src: p1h3_1_2, label: 'Piso 1 - Habitación 3 - Vista 3', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
+  return asset;
+};
 
-  // Piso 1 - Habitación 4
-  { src: p1h4_1, label: 'Piso 1 - Habitación 4', tipo: 'compartida', cuposDisponibles: 1, genero: 'caballero', aireAcondicionado: false },
-  { src: p1h4_1_1, label: 'Piso 1 - Habitación 4 - Vista 2', tipo: 'compartida', cuposDisponibles: 1, genero: 'caballero', aireAcondicionado: false },
-  { src: p1h4_1_2, label: 'Piso 1 - Habitación 4 - Vista 3', tipo: 'compartida', cuposDisponibles: 1, genero: 'caballero', aireAcondicionado: false },
-  { src: p1h4_1_3, label: 'Piso 1 - Habitación 4 - Vista 4', tipo: 'compartida', cuposDisponibles: 1, genero: 'caballero', aireAcondicionado: false },
-  { src: p1h4_1_4, label: 'Piso 1 - Habitación 4 - Vista 5', tipo: 'compartida', cuposDisponibles: 1, genero: 'caballero', aireAcondicionado: false },
+const getResponsiveImage = (path) => {
+  const basePath = path.replace(/\.(jpe?g)$/i, '');
 
-  // Piso 2 - Habitación 1
-  { src: p2h1_1, label: 'Piso 2 - Habitación 1', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
-  { src: p2h1_1_1, label: 'Piso 2 - Habitación 1 - Vista 2', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
-  { src: p2h1_1_2, label: 'Piso 2 - Habitación 1 - Vista 3', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
-  { src: p2h1_1_3, label: 'Piso 2 - Habitación 1 - Vista 4', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
+  return {
+    src: getGalleryAsset(path),
+    sources: {
+      webp: [
+        { src: getGalleryAsset(`${basePath}-480.webp`), width: 480 },
+        { src: getGalleryAsset(`${basePath}-960.webp`), width: 960 },
+      ],
+    },
+  };
+};
 
-  // Piso 2 - Habitación 2
-  { src: p2h2_1, label: 'Piso 2 - Habitación 2', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
-  { src: p2h2_1_1, label: 'Piso 2 - Habitación 2 - Vista 2', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
-  { src: p2h2_1_2, label: 'Piso 2 - Habitación 2 - Vista 3', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
-  { src: p2h2_1_3, label: 'Piso 2 - Habitación 2 - Vista 4', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
+const galleryGroups = [
+  {
+    id: 'zonas-comunes',
+    label: 'Zonas comunes',
+    images: [
+      { ...getResponsiveImage('./assets/zonas-comunes/entrada-C0iLJZAX.jpg'), disponibilidad: 'Zona Común', label: 'Entrada Principal' },
+      { ...getResponsiveImage('./assets/zonas-comunes/entrada1-CoiJC5Zf.jpg'), disponibilidad: 'Zona Común', label: 'Entrada Lateral' },
+      { ...getResponsiveImage('./assets/zonas-comunes/comedor-Ck06iimg.jpg'), disponibilidad: 'Zona Común', label: 'Comedor Principal' },
+      { ...getResponsiveImage('./assets/zonas-comunes/comedor1-ClDkmGwk.jpg'), disponibilidad: 'Zona Común', label: 'Comedor Auxiliar' },
+      { ...getResponsiveImage('./assets/zonas-comunes/p2-CDQIcf_R.jpg'), disponibilidad: 'Zona Común', label: 'Pasillo' },
+      { ...getResponsiveImage('./assets/zonas-comunes/salacomedor-Vz53_xmY.jpg'), disponibilidad: 'Zona Común', label: 'Sala-Comedor' },
+    ],
+  },
+  {
+    id: 'p1-h1',
+    label: 'Piso 1 - Habitación 1',
+    images: [
+      { ...getResponsiveImage('./assets/p1/h1/p1_h1_1.jpg'), label: 'Piso 1 - Habitación 1', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
+      { ...getResponsiveImage('./assets/p1/h1/p1_h1_1.1.jpg'), label: 'Piso 1 - Habitación 1 - Vista 2', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
+      { ...getResponsiveImage('./assets/p1/h1/p1_h1_1.2.jpg'), label: 'Piso 1 - Habitación 1 - Vista 3', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
+      { ...getResponsiveImage('./assets/p1/h1/p1_h1_1.3.jpg'), label: 'Piso 1 - Habitación 1 - Vista 4', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
+      { ...getResponsiveImage('./assets/p1/h1/p1_h1_1.4.jpg'), label: 'Piso 1 - Habitación 1 - Vista 5', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
+    ],
+  },
+  {
+    id: 'p1-h2',
+    label: 'Piso 1 - Habitación 2',
+    images: [
+      { ...getResponsiveImage('./assets/p1/h2/p1_h2_1.jpg'), label: 'Piso 1 - Habitación 2', tipo: 'compartida', cuposDisponibles: 1, genero: 'dama', aireAcondicionado: true },
+      { ...getResponsiveImage('./assets/p1/h2/p1_h2_1.1.jpg'), label: 'Piso 1 - Habitación 2 - Vista 2', tipo: 'compartida', cuposDisponibles: 1, genero: 'dama', aireAcondicionado: true },
+      { ...getResponsiveImage('./assets/p1/h2/p1_h2_1.2.jpg'), label: 'Piso 1 - Habitación 2 - Vista 3', tipo: 'compartida', cuposDisponibles: 1, genero: 'dama', aireAcondicionado: true },
+      { ...getResponsiveImage('./assets/p1/h2/p1_h2_1.3.jpg'), label: 'Piso 1 - Habitación 2 - Vista 4', tipo: 'compartida', cuposDisponibles: 1, genero: 'dama', aireAcondicionado: true },
+      { ...getResponsiveImage('./assets/p1/h2/p1_h2_1.4.jpg'), label: 'Piso 1 - Habitación 2 - Vista 5', tipo: 'compartida', cuposDisponibles: 1, genero: 'dama', aireAcondicionado: true },
+    ],
+  },
+  {
+    id: 'p1-h3',
+    label: 'Piso 1 - Habitación 3',
+    images: [
+      { ...getResponsiveImage('./assets/p1/h3/p1_h3_1.jpg'), label: 'Piso 1 - Habitación 3', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
+      { ...getResponsiveImage('./assets/p1/h3/p1_h3_1.1.jpg'), label: 'Piso 1 - Habitación 3 - Vista 2', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
+      { ...getResponsiveImage('./assets/p1/h3/p1_h3_1.2.jpg'), label: 'Piso 1 - Habitación 3 - Vista 3', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
+    ],
+  },
+  {
+    id: 'p1-h4',
+    label: 'Piso 1 - Habitación 4',
+    images: [
+      { ...getResponsiveImage('./assets/p1/h4/p1_h4_1.jpg'), label: 'Piso 1 - Habitación 4', tipo: 'compartida', cuposDisponibles: 1, genero: 'caballero', aireAcondicionado: false },
+      { ...getResponsiveImage('./assets/p1/h4/p1_h4.1.1.jpg'), label: 'Piso 1 - Habitación 4 - Vista 2', tipo: 'compartida', cuposDisponibles: 1, genero: 'caballero', aireAcondicionado: false },
+      { ...getResponsiveImage('./assets/p1/h4/p1_h4_1.2.jpg'), label: 'Piso 1 - Habitación 4 - Vista 3', tipo: 'compartida', cuposDisponibles: 1, genero: 'caballero', aireAcondicionado: false },
+      { ...getResponsiveImage('./assets/p1/h4/p1_h4_1.3.jpg'), label: 'Piso 1 - Habitación 4 - Vista 4', tipo: 'compartida', cuposDisponibles: 1, genero: 'caballero', aireAcondicionado: false },
+      { ...getResponsiveImage('./assets/p1/h4/p1_h4_1.4.jpg'), label: 'Piso 1 - Habitación 4 - Vista 5', tipo: 'compartida', cuposDisponibles: 1, genero: 'caballero', aireAcondicionado: false },
+    ],
+  },
+  {
+    id: 'p2-h1',
+    label: 'Piso 2 - Habitación 1',
+    images: [
+      { ...getResponsiveImage('./assets/p2/h1/p2_h1_1.jpeg'), label: 'Piso 2 - Habitación 1', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
+      { ...getResponsiveImage('./assets/p2/h1/p2_h1_1.1.jpeg'), label: 'Piso 2 - Habitación 1 - Vista 2', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
+      { ...getResponsiveImage('./assets/p2/h1/p2_h1_1.2.jpeg'), label: 'Piso 2 - Habitación 1 - Vista 3', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
+      { ...getResponsiveImage('./assets/p2/h1/p2_h1_1.3.jpeg'), label: 'Piso 2 - Habitación 1 - Vista 4', tipo: 'compartida', cuposDisponibles: 2, aireAcondicionado: true },
+    ],
+  },
+  {
+    id: 'p2-h2',
+    label: 'Piso 2 - Habitación 2',
+    images: [
+      { ...getResponsiveImage('./assets/p2/h2/p2_h2_1.jpg'), label: 'Piso 2 - Habitación 2', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
+      { ...getResponsiveImage('./assets/p2/h2/p2_h2_1.1.jpg'), label: 'Piso 2 - Habitación 2 - Vista 2', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
+      { ...getResponsiveImage('./assets/p2/h2/p2_h2_1.2.jpg'), label: 'Piso 2 - Habitación 2 - Vista 3', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
+      { ...getResponsiveImage('./assets/p2/h2/p2_h2_1.3.jpg'), label: 'Piso 2 - Habitación 2 - Vista 4', tipo: 'individual', cuposDisponibles: 0, aireAcondicionado: true },
+    ],
+  },
 ];
+
+const imagenes = galleryGroups.flatMap((group) => group.images);
 
 // Configuración global de cupos
 const CUPOS_LLENOS = false;
@@ -194,7 +216,7 @@ export default function App() {
             <Features />
           </ErrorBoundary>
           <ErrorBoundary>
-            <Carousel images={imagenes} />
+            <Carousel images={galleryGroups} />
           </ErrorBoundary>
           <ErrorBoundary>
             <CardPricing

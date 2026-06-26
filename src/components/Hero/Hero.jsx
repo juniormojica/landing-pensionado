@@ -7,7 +7,26 @@ import { openWhatsApp } from "../../utils/whatsapp";
 const Hero = ({ handleCTAClick }) => {
   return (
     <div id='inicio' className="relative min-h-[300px] w-full bg-gradient-to-b from-primaryLight/10 to-white pt-20 md:pt-24">
-      <div className="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=1920&q=80')] bg-cover bg-center opacity-5" />
+      <picture className="absolute inset-0 z-0 opacity-5 pointer-events-none">
+        <source
+          media="(max-width: 767px)"
+          srcSet="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=480&auto=format&fit=crop&q=70 480w, https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=768&auto=format&fit=crop&q=70 768w"
+          sizes="100vw"
+        />
+        <source
+          srcSet="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=1280&auto=format&fit=crop&q=75 1280w, https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=1920&auto=format&fit=crop&q=75 1920w"
+          sizes="100vw"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=1280&auto=format&fit=crop&q=75"
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover object-center"
+          width="1920"
+          height="1080"
+          loading="eager"
+        />
+      </picture>
       <div className="container relative z-10 mx-auto px-4 py-8 md:py-12 lg:py-16">
         <motion.div
           onClick={() => scrollToSection("galeria")}
