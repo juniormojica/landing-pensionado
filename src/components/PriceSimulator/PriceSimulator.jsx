@@ -33,15 +33,15 @@ const PriceSimulator = ({ handleCTAClick, images }) => {
                     id: 'shared',
                     name: 'Habitación Compartida',
                     description: 'Comparte con otro estudiante',
-                    price: 380000,
-                    features: ['Cama individual', 'Colchón ortopédico', 'Baño privado', 'Armario', 'Escritorio', 'Ventilador']
+                    price: 400000,
+                    features: ['Servicios incluidos', 'Cama individual', 'Colchón ortopédico', 'Baño privado', 'Armario', 'Escritorio', 'Ventilador']
                 },
                 {
                     id: 'individual',
                     name: 'Habitación Individual',
                     description: 'Privacidad total para ti',
-                    price: 530000,
-                    features: ['Cuarto privado', 'Cama individual', 'Colchón ortopédico', 'Baño privado', 'Armario', 'Escritorio', 'Ventilador'],
+                    price: 550000,
+                    features: ['Servicios incluidos', 'Cuarto privado', 'Cama individual', 'Colchón ortopédico', 'Baño privado', 'Armario', 'Escritorio', 'Ventilador'],
                     popular: true
                 }
             ]
@@ -63,7 +63,7 @@ const PriceSimulator = ({ handleCTAClick, images }) => {
                     name: 'Sí, quiero aire acondicionado',
                     description: 'Disfruta de 8 horas de aire acondicionado diarias',
                     price: null, // Will be calculated based on room type
-                    getPriceByRoom: (roomType) => roomType === 'shared' ? 70000 : 120000
+                    getPriceByRoom: (roomType) => roomType === 'shared' ? 100000 : 140000
                 }
             ]
         },

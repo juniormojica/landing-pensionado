@@ -25,6 +25,10 @@ const CardP = ({ plan, formatPrice, handleWhatsAppClick, isAvailable, disabledRe
             </span>
             <span className="ml-2 text-gray-500">/Mes</span>
           </div>
+          <div className="inline-flex items-center gap-2 rounded-full bg-accentGreen/10 px-4 py-2 text-sm font-semibold text-accentGreen">
+            <Check className="h-4 w-4" />
+            Servicios incluidos
+          </div>
         </div>
 
         {/* Features List */}

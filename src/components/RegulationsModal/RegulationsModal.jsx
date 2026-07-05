@@ -69,6 +69,7 @@ const regulations = [
     highlight: true,
     details: [
       'El aire acondicionado se usa SOLO durante las horas de sueño.',
+      'Cuando aplica, es un adicional mensual: $100.000 COP en habitación compartida y $140.000 COP en habitación individual.',
       'Apagar luces, abanicos y AC al salir de la habitación.',
       'La motobomba no debe encenderse por más de 15 minutos.',
     ],
@@ -105,7 +106,8 @@ const regulations = [
     details: [
       'Lavado manual disponible sin costo adicional.',
       'Lavadora automática: $15.000 COP/mes por carga semanal.',
-      'Almuerzo: $10.000 COP por plato (pedir con 1 día de anticipación).',
+      'Plan mensual de almuerzo: $300.000 COP/mes, de lunes a sábado.',
+      'Almuerzo por plato: $10.000 COP (pedir con 1 día de anticipación).',
     ],
   },
 ];

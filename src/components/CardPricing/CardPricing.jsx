@@ -7,8 +7,9 @@ const planPricings = [
   {
     packageName: "Habitacion Compartida",
     roomType: "compartida",
-    price: 380000,
+    price: 400000,
     features: [
+      'Servicios incluidos',
       'Cuarto Compartido Con otro Estudiante',
       "Cama individual",
       "Baño privado",
@@ -23,14 +24,15 @@ const planPricings = [
     ],
     additionals: {
       food: 300000,
-      airConditioning: 70000
+      airConditioning: 100000
     }
   },
   {
     packageName: "Habitacion Individual",
     roomType: "individual",
-    price: 530000,
+    price: 550000,
     features: [
+      'Servicios incluidos',
       'Cuarto Privado',
       "Cama individual",
       'Colchon ',
@@ -47,7 +49,7 @@ const planPricings = [
     ],
     additionals: {
       food: 300000,
-      airConditioning: 120000
+      airConditioning: 140000
     }
   }
 ];
@@ -136,7 +138,7 @@ const CardPricing = ({ handleCTAClick, images }) => {
             className="text-sm md:text-base lg:text-lg text-gray-600 max-w-2xl mx-auto px-4"
             variants={itemVariants}
           >
-            Escoge el plan que mejor se adapte a tus necesidades. Todos incluyen servicios básicos y acceso a áreas comunes.
+            Escoge el plan que mejor se adapte a tus necesidades. Todos los planes incluyen servicios y acceso a áreas comunes.
           </motion.p>
         </motion.div>
 
